@@ -1,0 +1,19 @@
+data_dir: data/puzzle_shards
+output_dir: runs/sl_puzzles
+resume_from: runs/sl_warmstart/final.pt
+bf16: true
+num_workers: 4
+total_steps: 40000
+ckpt_every: 5000
+
+model:
+  channels: 256
+  num_blocks: 20
+
+train:
+  lr: 5.0e-4
+  weight_decay: 1.0e-4
+  batch_size: 2048
+  policy_loss_weight: 1.0
+  value_loss_weight: 0.3   # value target (always +1) is near-meaningless for puzzles
+  grad_clip: 5.0

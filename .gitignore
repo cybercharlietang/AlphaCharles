@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pt
+*.ckpt
+*.pgn
+*.zst
+data/raw/
+data/processed/
+runs/
+wandb/
+.venv/
+.env
+artifacts/
+*.egg-info/
+.DS_Store

@@ -1,0 +1,29 @@
+output_dir: runs/rl_selfplay
+resume_from: runs/sl_puzzles/final.pt
+replay_capacity: 1000000
+total_steps: 100000
+ckpt_every: 2000
+move_limit: 512
+resign_threshold: -0.95
+resign_after_move: 20
+
+model:
+  channels: 256
+  num_blocks: 20
+
+train:
+  lr: 2.0e-4
+  weight_decay: 1.0e-4
+  batch_size: 1024
+  policy_loss_weight: 1.0
+  value_loss_weight: 1.0
+  grad_clip: 5.0
+
+mcts:
+  c_puct: 2.5
+  num_simulations: 400         # cheaper than 800 during self-play, fine for trained net
+  dirichlet_alpha: 0.3
+  dirichlet_epsilon: 0.25
+  add_root_noise: true
+  temperature_moves: 30
+  fpu: 0.0
