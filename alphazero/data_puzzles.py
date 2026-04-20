@@ -25,7 +25,7 @@ from dataclasses import dataclass
 import chess
 import numpy as np
 
-from .encoding import NUM_PLANES, POLICY_SIZE, encode_board, move_to_index
+from .encoding import NUM_PLANES, POLICY_SIZE, encode_board_uint8, move_to_index
 
 
 @dataclass
@@ -59,7 +59,7 @@ def extract_puzzle_samples(fen: str, moves_str: str):
         if not board.is_legal(mv):
             return
         if i % 2 == 0:  # solver's move
-            planes = encode_board(board)
+            planes = encode_board_uint8(board)
             policy_idx = move_to_index(mv, board)
             yield planes, policy_idx, 1.0  # solver wins these
         board.push(mv)
@@ -70,7 +70,7 @@ def build_shards(csv_paths: list[str], out_dir: str, cfg: PuzzleFilterConfig,
     os.makedirs(out_dir, exist_ok=True)
     shard_idx = 0
     total = 0
-    cur_planes = np.zeros((shard_size, NUM_PLANES, 8, 8), dtype=np.float32)
+    cur_planes = np.zeros((shard_size, NUM_PLANES, 8, 8), dtype=np.uint8)
     cur_policy_idx = np.zeros(shard_size, dtype=np.int32)
     cur_values = np.zeros(shard_size, dtype=np.float32)
     cur_n = 0

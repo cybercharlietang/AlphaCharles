@@ -18,7 +18,9 @@ import pytest
 from alphazero.encoding import (
     NUM_PLANES,
     POLICY_SIZE,
+    decode_uint8_to_float32,
     encode_board,
+    encode_board_uint8,
     index_to_move,
     legal_move_mask,
     move_to_index,
@@ -82,6 +84,25 @@ def test_mirror_invariance():
     # Piece planes (first 112) should match. Constant planes differ in
     # side-to-move and move-count scaling, so compare only piece history.
     assert np.array_equal(x1[:112], x2[:112])
+
+
+@pytest.mark.parametrize("fen", POSITIONS)
+def test_uint8_roundtrip(fen):
+    """encode_board and encode_board_uint8 -> decode should match within quantization error."""
+    board = chess.Board(fen)
+    # Play a few plies to exercise the fullmove/halfmove planes.
+    for _ in range(3):
+        legal = list(board.legal_moves)
+        if not legal:
+            break
+        board.push(legal[0])
+    original = encode_board(board)
+    compressed = encode_board_uint8(board)
+    recovered = decode_uint8_to_float32(compressed)
+    assert recovered.shape == original.shape
+    # Binary planes should match exactly. Counter planes: uint8 quantization
+    # of int values is lossless, so recovery is exact.
+    np.testing.assert_allclose(recovered, original, atol=1e-6)
 
 
 def test_underpromotion_encodes_separately():

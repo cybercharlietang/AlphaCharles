@@ -29,7 +29,20 @@ echo "[5/6] download data"
 mkdir -p data/raw
 bash scripts/download_data.sh data/raw
 
-echo "[6/6] verify stockfish + torch"
+echo "[6/7] disk preflight"
+# Require at least 150 GB free on the volume and 30 GB on container disk.
+WS_FREE_GB=$(df -BG --output=avail /workspace 2>/dev/null | tail -1 | tr -dc '0-9' || echo 0)
+CD_FREE_GB=$(df -BG --output=avail /root 2>/dev/null | tail -1 | tr -dc '0-9' || echo 0)
+echo "  /workspace free: ${WS_FREE_GB} GB  (need >=150)"
+echo "  /root free:      ${CD_FREE_GB} GB  (need >=30)"
+if [[ "$WS_FREE_GB" -lt 150 ]]; then
+  echo "  WARNING: /workspace has <150 GB free. SL shards may not fit."
+fi
+if [[ "$CD_FREE_GB" -lt 30 ]]; then
+  echo "  WARNING: container disk has <30 GB free. Install may fail."
+fi
+
+echo "[7/7] verify stockfish + torch"
 stockfish -h | head -1 || true
 python -c "import torch; print('cuda available:', torch.cuda.is_available(), 'devices:', torch.cuda.device_count())"
 python -c "from alphazero.model import AlphaZeroNet, ModelConfig; m = AlphaZeroNet(ModelConfig()); print(f'model ok: {m.num_parameters()/1e6:.2f}M params')"

@@ -33,8 +33,28 @@ torchrun --nproc_per_node="$N_GPUS" scripts/train_sl.py --config configs/sl_puzz
 echo "=== [5/5] Self-play RL ==="
 torchrun --nproc_per_node="$N_GPUS" scripts/train_rl.py --config configs/rl_selfplay.yaml
 
-echo "=== Done. Running eval vs stockfish depth=10 ==="
-python scripts/eval_vs_stockfish.py \
-  --ckpt runs/rl_selfplay/final.pt \
-  --stockfish "$(which stockfish)" \
-  --n-games 20 --our-sims 800 --opp-depth 10
+echo "=== Eval vs stockfish depth=5, 10, 15 ==="
+for d in 5 10 15; do
+  python scripts/eval_vs_stockfish.py \
+    --ckpt runs/rl_selfplay/final.pt \
+    --stockfish "$(which stockfish)" \
+    --n-games 20 --our-sims 800 --opp-depth $d | tee "runs/eval_stockfish_d${d}.txt"
+done
+
+# Write a sentinel file so we know training + eval are complete and the pod is
+# ready to accept interactive play sessions.
+touch runs/TRAINING_COMPLETE
+
+echo ""
+echo "===================================================="
+echo " Training complete. Pod is now IDLE and ready to play."
+echo " SSH in and run:"
+echo "   cd $REPO_DIR && source $VENV_DIR/bin/activate"
+echo "   python scripts/play_human.py --ckpt runs/rl_selfplay/final.pt --games 10"
+echo ""
+echo " DO NOT terminate the pod until you've played your match."
+echo "===================================================="
+
+# Keep the script alive so systemd / the launching shell doesn't consider
+# the job "done" and trigger any auto-stop. User decides when to terminate.
+tail -f /dev/null

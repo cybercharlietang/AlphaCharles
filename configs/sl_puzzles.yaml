@@ -17,7 +17,7 @@ model:
 train:
   lr: 5.0e-4
   weight_decay: 1.0e-4
-  batch_size: 2048
+  batch_size: 4096
   policy_loss_weight: 1.0
   value_loss_weight: 0.3   # value target (always +1) is near-meaningless for puzzles
   grad_clip: 5.0

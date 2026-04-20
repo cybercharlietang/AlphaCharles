@@ -203,3 +203,35 @@ def encode_board(board: chess.Board) -> np.ndarray:
     const[6].fill(board.halfmove_clock / 100.0)        # 50-move-rule counter
 
     return np.concatenate([history, const], axis=0)  # (119, 8, 8)
+
+
+# ---- uint8 storage format --------------------------------------------------
+#
+# For disk storage we compress float32 planes to uint8 (4x smaller). All piece,
+# repetition, colour, and castling planes are binary {0,1} → fit in 1 byte.
+# The two normalised counter planes (fullmove/100, halfmove/100) are recovered
+# at load time by storing the raw integer count in uint8 (fullmove caps at 255,
+# halfmove caps at 100). Decoder multiplies by 1/100 to restore the float scale.
+
+FULLMOVE_PLANE = HISTORY_LEN * PLANES_PER_FRAME + 1   # 113
+HALFMOVE_PLANE = HISTORY_LEN * PLANES_PER_FRAME + 6   # 118
+
+
+def encode_board_uint8(board: chess.Board) -> np.ndarray:
+    """Like encode_board but returns uint8 for disk storage. Integer planes
+    (fullmove, halfmove) hold the RAW count, not the normalised float."""
+    x = encode_board(board)
+    # Reverse the /100 normalisation before uint8 cast.
+    x[FULLMOVE_PLANE] *= 100.0
+    x[HALFMOVE_PLANE] *= 100.0
+    np.clip(x, 0, 255, out=x)
+    return x.astype(np.uint8)
+
+
+def decode_uint8_to_float32(planes_u8: np.ndarray) -> np.ndarray:
+    """Reverse encode_board_uint8. Accepts (..., 119, 8, 8) arrays."""
+    out = planes_u8.astype(np.float32)
+    # Re-apply the /100 normalisation on the counter planes.
+    out[..., FULLMOVE_PLANE, :, :] *= 1.0 / 100.0
+    out[..., HALFMOVE_PLANE, :, :] *= 1.0 / 100.0
+    return out

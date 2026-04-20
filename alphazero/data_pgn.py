@@ -26,7 +26,7 @@ import chess
 import chess.pgn
 import numpy as np
 
-from .encoding import NUM_PLANES, POLICY_SIZE, encode_board, move_to_index
+from .encoding import NUM_PLANES, POLICY_SIZE, encode_board_uint8, move_to_index
 
 
 @dataclass
@@ -72,7 +72,7 @@ def extract_samples_from_game(game: chess.pgn.Game, cfg: PgnFilterConfig):
     for mv in moves:
         if not board.is_legal(mv):
             return  # corrupt game
-        planes = encode_board(board)
+        planes = encode_board_uint8(board)
         policy_idx = move_to_index(mv, board)
         mover = 1 if board.turn == chess.WHITE else -1
         value = 0.0 if winner == 0 else (1.0 if mover == winner else -1.0)
@@ -86,7 +86,7 @@ def build_shards(pgn_paths: list[str], out_dir: str, cfg: PgnFilterConfig,
     os.makedirs(out_dir, exist_ok=True)
     shard_idx = 0
     total = 0
-    cur_planes = np.zeros((shard_size, NUM_PLANES, 8, 8), dtype=np.float32)
+    cur_planes = np.zeros((shard_size, NUM_PLANES, 8, 8), dtype=np.uint8)
     cur_policy_idx = np.zeros(shard_size, dtype=np.int32)
     cur_values = np.zeros(shard_size, dtype=np.float32)
     cur_n = 0

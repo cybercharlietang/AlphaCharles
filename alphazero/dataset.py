@@ -10,7 +10,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset, ConcatDataset
 
-from .encoding import NUM_PLANES, POLICY_SIZE
+from .encoding import NUM_PLANES, POLICY_SIZE, decode_uint8_to_float32
 
 
 class ShardDataset(Dataset):
@@ -32,7 +32,11 @@ class ShardDataset(Dataset):
         return self._len
 
     def __getitem__(self, i: int):
-        planes = torch.from_numpy(np.asarray(self.planes[i]))
+        raw = np.asarray(self.planes[i])
+        if raw.dtype == np.uint8:
+            planes = torch.from_numpy(decode_uint8_to_float32(raw))
+        else:
+            planes = torch.from_numpy(raw.astype(np.float32))
         policy = torch.zeros(POLICY_SIZE, dtype=torch.float32)
         policy[int(self.policy_idx[i])] = 1.0
         value = torch.tensor(float(self.values[i]), dtype=torch.float32)
