@@ -14,7 +14,7 @@
 #   3 (right-bot):   shell for ad-hoc commands
 
 set -euo pipefail
-REPO_DIR="${REPO_DIR:-/workspace/alphazero-chess}"
+REPO_DIR="${REPO_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 VENV_DIR="${VENV_DIR:-/root/venv}"
 SESSION="${TMUX_SESSION:-alphacharles}"
 

@@ -3,7 +3,8 @@
 # Prereq: pod_setup.sh has been run.
 set -euo pipefail
 
-REPO_DIR="${REPO_DIR:-/workspace/alphazero-chess}"
+# Default REPO_DIR to the script's own parent dir (robust to repo folder name).
+REPO_DIR="${REPO_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 VENV_DIR="${VENV_DIR:-/root/venv}"
 cd "$REPO_DIR"
 source "$VENV_DIR/bin/activate"
