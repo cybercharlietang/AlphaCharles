@@ -3,6 +3,10 @@ resume_from: runs/sl_puzzles/final.pt
 replay_capacity: 1000000
 total_steps: 100000
 ckpt_every: 2000
+log_every: 50
+wandb: true
+wandb_project: alphazero-chess
+run_name: rl_selfplay
 move_limit: 512
 resign_threshold: -0.95
 resign_after_move: 20

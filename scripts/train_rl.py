@@ -31,6 +31,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from alphazero.encoding import NUM_PLANES, POLICY_SIZE
 from alphazero.mcts import MCTSConfig
+from alphazero.metrics import MetricsTracker
 from alphazero.model import AlphaZeroNet, ModelConfig
 from alphazero.replay import ReplayBuffer
 from alphazero.selfplay import SelfPlayConfig, play_game
@@ -80,6 +81,14 @@ def main():
         games_collected = 0
         start = time.time()
 
+        tracker = MetricsTracker(
+            run_name=cfg.get("run_name", Path(args.config).stem),
+            project=cfg.get("wandb_project", "alphazero-chess"),
+            config=cfg,
+            wandb_enabled=cfg.get("wandb", True),
+            stdout_every=cfg.get("log_every", 50),
+        )
+
         while step < total_steps:
             # Drain any incoming games from workers (in a real system this would
             # be async/queue-based; for now we do a synchronous all-gather each
@@ -92,6 +101,14 @@ def main():
                 rec = play_game(_ddp_unwrap(net), device, sp_cfg)
                 buffer.add(rec.planes, rec.policies, rec.values)
                 games_collected += 1
+                resigned = (rec.ply_count < cfg.get("move_limit", 512)
+                            and rec.result != "1/2-1/2")
+                tracker.log_game(
+                    result=rec.result, ply_count=rec.ply_count,
+                    resigned=False,  # accurate resignation flag would require selfplay.py changes
+                    root_value_mean=None, root_entropy=None,
+                    step=step, buffer_size=len(buffer),
+                )
                 continue
 
             planes, policies, values = buffer.sample(train_cfg.batch_size)
@@ -109,18 +126,18 @@ def main():
                     value_weight=train_cfg.value_loss_weight,
                 )
             loss.backward()
+            tracker.log_grad_norm(net, step=step + 1, clip_value=train_cfg.grad_clip)
             torch.nn.utils.clip_grad_norm_(net.parameters(), train_cfg.grad_clip)
             optimizer.step()
             step += 1
 
-            if step % 50 == 0:
+            tracker.log({**metrics, "train/lr": train_cfg.lr,
+                         "rl/games_collected": games_collected}, step=step)
+            if step % cfg.get("log_every", 50) == 0:
+                tracker.log_batch_stats(p_logits, v_pred, policies, values, step=step)
+                tracker.log_gpu(step=step)
                 elapsed = time.time() - start
-                print(f"step {step}/{total_steps} | "
-                      f"loss={metrics['loss/total']:.4f} "
-                      f"p={metrics['loss/policy']:.4f} "
-                      f"v={metrics['loss/value']:.4f} | "
-                      f"buffer={len(buffer)} | games={games_collected} | "
-                      f"{step/elapsed:.1f} steps/s")
+                tracker.log({"train/steps_per_sec": step / elapsed}, step=step)
 
             if step % cfg.get("ckpt_every", 1000) == 0:
                 ckpt = out_dir / f"ckpt_{step:07d}.pt"

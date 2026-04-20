@@ -23,7 +23,7 @@ pip install --upgrade pip wheel -q
 
 echo "[4/6] install pytorch + deps"
 pip install -q torch --index-url https://download.pytorch.org/whl/cu121
-pip install -q python-chess numpy tqdm zstandard pyyaml wandb pytest
+pip install -q python-chess numpy tqdm zstandard pyyaml wandb pytest nvidia-ml-py
 
 echo "[5/6] download data"
 mkdir -p data/raw

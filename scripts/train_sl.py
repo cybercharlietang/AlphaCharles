@@ -28,6 +28,7 @@ from torch.utils.data import DataLoader, DistributedSampler
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from alphazero.dataset import build_dataset_from_dir
+from alphazero.metrics import MetricsTracker
 from alphazero.model import AlphaZeroNet, ModelConfig
 from alphazero.training import TrainConfig, train_step
 
@@ -103,6 +104,14 @@ def main():
     scaler = None  # bfloat16 doesn't need a scaler
     use_amp = cfg.get("bf16", True) and torch.cuda.is_available()
 
+    tracker = MetricsTracker(
+        run_name=cfg.get("run_name", Path(args.config).stem),
+        project=cfg.get("wandb_project", "alphazero-chess"),
+        config=cfg,
+        wandb_enabled=cfg.get("wandb", True),
+        stdout_every=cfg.get("log_every", 50),
+    )
+
     step = 0
     epoch = 0
     start = time.time()
@@ -132,20 +141,21 @@ def main():
                     value_weight=train_cfg.value_loss_weight,
                 )
             loss.backward()
+            # Log grad norm BEFORE clip so we can see spikes.
+            grad_norm = tracker.log_grad_norm(net, step=step + 1, clip_value=train_cfg.grad_clip)
             torch.nn.utils.clip_grad_norm_(net.parameters(), train_cfg.grad_clip)
             optimizer.step()
             scheduler.step()
 
             step += 1
-            if is_main and step % 50 == 0:
+            # Log loss + lr every step (cheap); batch stats + gpu every log_every.
+            tracker.log({**metrics, "train/lr": scheduler.get_last_lr()[0]}, step=step)
+            if is_main and step % cfg.get("log_every", 50) == 0:
+                tracker.log_batch_stats(policy_logits, value_pred, policy_t, value_t, step=step)
+                tracker.log_gpu(step=step)
                 elapsed = time.time() - start
                 samples = step * train_cfg.batch_size * world_size
-                print(f"step {step}/{total_steps} | "
-                      f"loss={metrics['loss/total']:.4f} "
-                      f"p={metrics['loss/policy']:.4f} "
-                      f"v={metrics['loss/value']:.4f} | "
-                      f"lr={scheduler.get_last_lr()[0]:.2e} | "
-                      f"{samples/elapsed:.0f} samples/s")
+                tracker.log({"train/samples_per_sec": samples / elapsed}, step=step)
             if is_main and step % cfg.get("ckpt_every", 5000) == 0:
                 ckpt = out_dir / f"ckpt_{step:07d}.pt"
                 torch.save({
@@ -164,6 +174,7 @@ def main():
             "model_cfg": model_cfg.__dict__,
         }, ckpt)
         print(f"saved final checkpoint: {ckpt}")
+    tracker.finish()
     cleanup_ddp(is_ddp)
 
 
