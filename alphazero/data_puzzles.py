@@ -91,12 +91,12 @@ def build_shards(csv_paths: list[str], out_dir: str, cfg: PuzzleFilterConfig,
         if cur_n == 0:
             return
         out = os.path.join(out_dir, f"puzzles_{shard_idx:05d}.npz")
-        tmp = out + ".tmp"
-        np.savez_compressed(tmp,
+        tmp_stem = os.path.join(out_dir, f"puzzles_{shard_idx:05d}.tmp")
+        np.savez_compressed(tmp_stem,
                             planes=cur_planes[:cur_n],
                             policy_idx=cur_policy_idx[:cur_n],
                             values=cur_values[:cur_n])
-        os.replace(tmp, out)
+        os.replace(tmp_stem + ".npz", out)
         print(f"  wrote {out} with {cur_n} samples")
         shard_idx += 1
         cur_n = 0

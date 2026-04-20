@@ -112,12 +112,14 @@ def build_shards(pgn_paths: list[str], out_dir: str, cfg: PgnFilterConfig,
         if cur_n == 0:
             return
         out = os.path.join(out_dir, f"shard_{shard_idx:05d}.npz")
-        tmp = out + ".tmp"
-        np.savez_compressed(tmp,
+        # numpy auto-appends .npz to savez_compressed filenames. Pass the
+        # stem without .npz so it writes to stem + ".npz", then atomic rename.
+        tmp_stem = os.path.join(out_dir, f"shard_{shard_idx:05d}.tmp")
+        np.savez_compressed(tmp_stem,
                             planes=cur_planes[:cur_n],
                             policy_idx=cur_policy_idx[:cur_n],
                             values=cur_values[:cur_n])
-        os.replace(tmp, out)  # atomic: never leave half-written shards on crash
+        os.replace(tmp_stem + ".npz", out)  # atomic: never leave half-written shards
         print(f"  wrote {out} with {cur_n} samples")
         shard_idx += 1
         cur_n = 0
