@@ -82,10 +82,26 @@ def extract_samples_from_game(game: chess.pgn.Game, cfg: PgnFilterConfig):
 
 def build_shards(pgn_paths: list[str], out_dir: str, cfg: PgnFilterConfig,
                  shard_size: int = 1_000_000, max_samples: int | None = None) -> int:
-    """Stream PGN files, writing shards of shard_size samples. Returns total samples."""
+    """Stream PGN files, writing shards of shard_size samples. Returns total samples.
+
+    Idempotent: if shards already exist in out_dir, skip through them and
+    resume numbering. Partial last-shard is re-written on resume (atomic tmpfile)."""
     os.makedirs(out_dir, exist_ok=True)
-    shard_idx = 0
-    total = 0
+    existing = sorted([f for f in os.listdir(out_dir) if f.startswith("shard_") and f.endswith(".npz")])
+    if existing:
+        # Resume at the next shard index; count existing samples.
+        total = 0
+        for f in existing:
+            with np.load(os.path.join(out_dir, f)) as d:
+                total += len(d["values"])
+        shard_idx = len(existing)
+        print(f"  found {shard_idx} existing shards with {total:,} samples, resuming")
+        if max_samples is not None and total >= max_samples:
+            print(f"  max_samples={max_samples:,} already reached; nothing to do")
+            return total
+    else:
+        shard_idx = 0
+        total = 0
     cur_planes = np.zeros((shard_size, NUM_PLANES, 8, 8), dtype=np.uint8)
     cur_policy_idx = np.zeros(shard_size, dtype=np.int32)
     cur_values = np.zeros(shard_size, dtype=np.float32)
@@ -96,10 +112,12 @@ def build_shards(pgn_paths: list[str], out_dir: str, cfg: PgnFilterConfig,
         if cur_n == 0:
             return
         out = os.path.join(out_dir, f"shard_{shard_idx:05d}.npz")
-        np.savez_compressed(out,
+        tmp = out + ".tmp"
+        np.savez_compressed(tmp,
                             planes=cur_planes[:cur_n],
                             policy_idx=cur_policy_idx[:cur_n],
                             values=cur_values[:cur_n])
+        os.replace(tmp, out)  # atomic: never leave half-written shards on crash
         print(f"  wrote {out} with {cur_n} samples")
         shard_idx += 1
         cur_n = 0

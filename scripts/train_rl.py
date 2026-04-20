@@ -57,9 +57,19 @@ def main():
 
     model_cfg = ModelConfig(**cfg.get("model", {}))
     net = AlphaZeroNet(model_cfg).to(device)
-    if cfg.get("resume_from"):
-        state = torch.load(cfg["resume_from"], map_location=device)
+
+    out_dir = Path(cfg["output_dir"])
+    out_dir.mkdir(parents=True, exist_ok=True)
+    auto_ckpt = sorted(out_dir.glob("ckpt_*.pt"))
+    resume_path = auto_ckpt[-1] if auto_ckpt else cfg.get("resume_from")
+    resume_step = 0
+    resume_optim_state = None
+    if resume_path:
+        print(f"[rank {rank}] resuming from {resume_path}")
+        state = torch.load(resume_path, map_location=device)
         net.load_state_dict(state["model"] if "model" in state else state)
+        resume_step = int(state.get("step", 0))
+        resume_optim_state = state.get("optimizer")
 
     train_cfg = TrainConfig(**cfg.get("train", {}))
     mcts_cfg = MCTSConfig(**cfg.get("mcts", {}))
@@ -68,16 +78,19 @@ def main():
                             resign_threshold=cfg.get("resign_threshold", -0.95),
                             resign_after_move=cfg.get("resign_after_move", 20))
 
-    out_dir = Path(cfg["output_dir"])
-    out_dir.mkdir(parents=True, exist_ok=True)
-
     if is_trainer:
         # ---- Trainer role ----
         buffer = ReplayBuffer(capacity=cfg.get("replay_capacity", 1_000_000))
         optimizer = torch.optim.AdamW(net.parameters(), lr=train_cfg.lr,
                                       weight_decay=train_cfg.weight_decay)
+        if resume_optim_state is not None:
+            try:
+                optimizer.load_state_dict(resume_optim_state)
+                print(f"  restored optimizer state at step {resume_step}")
+            except Exception as e:
+                print(f"  [warn] couldn't restore optimizer state: {e}")
         total_steps = cfg["total_steps"]
-        step = 0
+        step = resume_step
         games_collected = 0
         start = time.time()
 
@@ -141,17 +154,27 @@ def main():
 
             if step % cfg.get("ckpt_every", 1000) == 0:
                 ckpt = out_dir / f"ckpt_{step:07d}.pt"
+                tmp = ckpt.with_suffix(".pt.tmp")
                 torch.save({
                     "model": _ddp_unwrap(net).state_dict(),
+                    "optimizer": optimizer.state_dict(),
                     "step": step,
                     "model_cfg": model_cfg.__dict__,
-                }, ckpt)
+                }, tmp)
+                os.replace(tmp, ckpt)
                 print(f"  saved {ckpt}")
+                keep = cfg.get("keep_last_n_ckpts", 5)
+                all_ckpts = sorted(out_dir.glob("ckpt_*.pt"))
+                for old in all_ckpts[:-keep]:
+                    old.unlink()
                 if is_ddp:
                     _broadcast_weights(net)
 
+        final = out_dir / "final.pt"
+        tmp = final.with_suffix(".pt.tmp")
         torch.save({"model": _ddp_unwrap(net).state_dict(),
-                    "model_cfg": model_cfg.__dict__}, out_dir / "final.pt")
+                    "model_cfg": model_cfg.__dict__}, tmp)
+        os.replace(tmp, final)
 
     else:
         # ---- Self-play worker role ----

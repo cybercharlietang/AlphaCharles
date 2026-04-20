@@ -8,30 +8,43 @@ VENV_DIR="${VENV_DIR:-/root/venv}"
 cd "$REPO_DIR"
 source "$VENV_DIR/bin/activate"
 export PYTHONPATH="$REPO_DIR"
+mkdir -p runs
 
 N_GPUS="${N_GPUS:-8}"
 
-echo "=== [1/5] Build SL shards from Lichess Elite PGNs ==="
-python -m alphazero.data_pgn \
+# Sentinel files let us skip completed stages on restart.
+mark_done() { touch "runs/.done_$1"; }
+already_done() { [[ -f "runs/.done_$1" ]]; }
+stage() {
+  local name=$1; shift
+  if already_done "$name"; then
+    echo "=== [skip] $name already completed ==="
+    return
+  fi
+  echo "=== [run] $name ==="
+  "$@"
+  mark_done "$name"
+}
+
+stage "data_sl" python -m alphazero.data_pgn \
   --pgn data/raw/*.pgn \
   --out data/sl_shards \
   --min-rating 2200 \
-  --max-samples 30000000
+  --max-samples 15000000
 
-echo "=== [2/5] Build puzzle shards ==="
-python -m alphazero.data_puzzles \
+stage "data_puzzles" python -m alphazero.data_puzzles \
   --csv data/raw/lichess_db_puzzle.csv \
   --out data/puzzle_shards \
   --max-samples 3000000
 
-echo "=== [3/5] SL warm-start ==="
-torchrun --nproc_per_node="$N_GPUS" scripts/train_sl.py --config configs/sl_warmstart.yaml
+stage "sl_warmstart" torchrun --nproc_per_node="$N_GPUS" \
+  scripts/train_sl.py --config configs/sl_warmstart.yaml
 
-echo "=== [4/5] Puzzle fine-tune ==="
-torchrun --nproc_per_node="$N_GPUS" scripts/train_sl.py --config configs/sl_puzzles.yaml
+stage "sl_puzzles" torchrun --nproc_per_node="$N_GPUS" \
+  scripts/train_sl.py --config configs/sl_puzzles.yaml
 
-echo "=== [5/5] Self-play RL ==="
-torchrun --nproc_per_node="$N_GPUS" scripts/train_rl.py --config configs/rl_selfplay.yaml
+stage "rl_selfplay" torchrun --nproc_per_node="$N_GPUS" \
+  scripts/train_rl.py --config configs/rl_selfplay.yaml
 
 echo "=== Eval vs stockfish depth=5, 10, 15 ==="
 for d in 5 10 15; do

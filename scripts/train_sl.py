@@ -62,11 +62,29 @@ def main():
 
     model_cfg = ModelConfig(**cfg.get("model", {}))
     net = AlphaZeroNet(model_cfg).to(device)
-    if cfg.get("resume_from"):
-        state = torch.load(cfg["resume_from"], map_location=device)
-        net.load_state_dict(state["model"] if "model" in state else state)
+
+    # Auto-resume: prefer the latest ckpt_*.pt in output_dir over the `resume_from`
+    # field, so that if training crashes halfway, the next run continues.
+    out_dir = Path(cfg["output_dir"])
+    out_dir.mkdir(parents=True, exist_ok=True)
+    auto_ckpt = sorted(out_dir.glob("ckpt_*.pt"))
+    resume_path = None
+    resume_step = 0
+    resume_optim_state = None
+    if auto_ckpt:
+        resume_path = auto_ckpt[-1]
         if is_main:
-            print(f"resumed from {cfg['resume_from']}")
+            print(f"auto-resuming from latest ckpt: {resume_path}")
+    elif cfg.get("resume_from"):
+        resume_path = cfg["resume_from"]
+        if is_main:
+            print(f"resuming from seed ckpt: {resume_path}")
+
+    if resume_path:
+        state = torch.load(resume_path, map_location=device)
+        net.load_state_dict(state["model"] if "model" in state else state)
+        resume_step = int(state.get("step", 0))
+        resume_optim_state = state.get("optimizer")
 
     if is_ddp:
         net = DDP(net, device_ids=[device.index])
@@ -94,11 +112,20 @@ def main():
         lr=train_cfg.lr,
         weight_decay=train_cfg.weight_decay,
     )
+    if resume_optim_state is not None:
+        try:
+            optimizer.load_state_dict(resume_optim_state)
+            if is_main:
+                print(f"  restored optimizer state at step {resume_step}")
+        except Exception as e:
+            if is_main:
+                print(f"  [warn] couldn't restore optimizer state: {e}")
 
     total_steps = cfg["total_steps"]
     scheduler = torch.optim.lr_scheduler.OneCycleLR(
         optimizer, max_lr=train_cfg.lr, total_steps=total_steps,
         pct_start=0.05, anneal_strategy="cos",
+        last_epoch=resume_step - 1 if resume_step > 0 else -1,
     )
 
     scaler = None  # bfloat16 doesn't need a scaler
@@ -112,11 +139,9 @@ def main():
         stdout_every=cfg.get("log_every", 50),
     )
 
-    step = 0
+    step = resume_step
     epoch = 0
     start = time.time()
-    out_dir = Path(cfg["output_dir"])
-    out_dir.mkdir(parents=True, exist_ok=True)
 
     while step < total_steps:
         if sampler is not None:
@@ -158,21 +183,30 @@ def main():
                 tracker.log({"train/samples_per_sec": samples / elapsed}, step=step)
             if is_main and step % cfg.get("ckpt_every", 5000) == 0:
                 ckpt = out_dir / f"ckpt_{step:07d}.pt"
+                tmp = ckpt.with_suffix(".pt.tmp")
                 torch.save({
                     "model": (net.module if is_ddp else net).state_dict(),
                     "optimizer": optimizer.state_dict(),
                     "step": step,
                     "model_cfg": model_cfg.__dict__,
-                }, ckpt)
+                }, tmp)
+                os.replace(tmp, ckpt)  # atomic; never leave a partial ckpt
                 print(f"  saved {ckpt}")
+                # Prune old checkpoints to bound disk usage.
+                keep = cfg.get("keep_last_n_ckpts", 5)
+                all_ckpts = sorted(out_dir.glob("ckpt_*.pt"))
+                for old in all_ckpts[:-keep]:
+                    old.unlink()
         epoch += 1
 
     if is_main:
         ckpt = out_dir / "final.pt"
+        tmp = ckpt.with_suffix(".pt.tmp")
         torch.save({
             "model": (net.module if is_ddp else net).state_dict(),
             "model_cfg": model_cfg.__dict__,
-        }, ckpt)
+        }, tmp)
+        os.replace(tmp, ckpt)
         print(f"saved final checkpoint: {ckpt}")
     tracker.finish()
     cleanup_ddp(is_ddp)

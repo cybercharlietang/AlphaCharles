@@ -68,8 +68,19 @@ def extract_puzzle_samples(fen: str, moves_str: str):
 def build_shards(csv_paths: list[str], out_dir: str, cfg: PuzzleFilterConfig,
                  shard_size: int = 500_000, max_samples: int | None = None) -> int:
     os.makedirs(out_dir, exist_ok=True)
-    shard_idx = 0
-    total = 0
+    existing = sorted([f for f in os.listdir(out_dir) if f.startswith("puzzles_") and f.endswith(".npz")])
+    if existing:
+        total = 0
+        for f in existing:
+            with np.load(os.path.join(out_dir, f)) as d:
+                total += len(d["values"])
+        shard_idx = len(existing)
+        print(f"  found {shard_idx} existing puzzle shards with {total:,} samples, resuming")
+        if max_samples is not None and total >= max_samples:
+            return total
+    else:
+        shard_idx = 0
+        total = 0
     cur_planes = np.zeros((shard_size, NUM_PLANES, 8, 8), dtype=np.uint8)
     cur_policy_idx = np.zeros(shard_size, dtype=np.int32)
     cur_values = np.zeros(shard_size, dtype=np.float32)
@@ -80,10 +91,12 @@ def build_shards(csv_paths: list[str], out_dir: str, cfg: PuzzleFilterConfig,
         if cur_n == 0:
             return
         out = os.path.join(out_dir, f"puzzles_{shard_idx:05d}.npz")
-        np.savez_compressed(out,
+        tmp = out + ".tmp"
+        np.savez_compressed(tmp,
                             planes=cur_planes[:cur_n],
                             policy_idx=cur_policy_idx[:cur_n],
                             values=cur_values[:cur_n])
+        os.replace(tmp, out)
         print(f"  wrote {out} with {cur_n} samples")
         shard_idx += 1
         cur_n = 0
