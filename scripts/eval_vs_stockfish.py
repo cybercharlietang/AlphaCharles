@@ -22,6 +22,7 @@ def main():
     ap.add_argument("--our-sims", type=int, default=400)
     ap.add_argument("--opp-depth", type=int, default=5)
     ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
+    ap.add_argument("--pgn-dir", default=None, help="save each game's PGN here")
     args = ap.parse_args()
 
     state = torch.load(args.ckpt, map_location=args.device)
@@ -30,7 +31,8 @@ def main():
     net.load_state_dict(state["model"] if "model" in state else state)
     net.eval()
 
-    cfg = MatchConfig(n_games=args.n_games, our_sims=args.our_sims, opp_depth=args.opp_depth)
+    cfg = MatchConfig(n_games=args.n_games, our_sims=args.our_sims, opp_depth=args.opp_depth,
+                      pgn_dir=args.pgn_dir)
     result = play_match(net, torch.device(args.device), args.stockfish, cfg, print_games=True)
     print()
     print(f"W/D/L: {result.wins}/{result.draws}/{result.losses} of {result.total}")

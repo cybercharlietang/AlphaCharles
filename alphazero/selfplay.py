@@ -17,6 +17,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import chess
+import chess.pgn
 import numpy as np
 import torch
 
@@ -39,6 +40,7 @@ class GameRecord:
     values: np.ndarray           # (T,) float32 in {-1, 0, 1}
     result: str                  # '1-0', '0-1', '1/2-1/2'
     ply_count: int
+    pgn: str = ""                # full game PGN text, empty if not tracked
 
 
 def play_game(net, device: torch.device, cfg: SelfPlayConfig | None = None,
@@ -53,6 +55,13 @@ def play_game(net, device: torch.device, cfg: SelfPlayConfig | None = None,
     traj_planes: list[np.ndarray] = []
     traj_policies: list[np.ndarray] = []
     traj_movers: list[bool] = []  # True = white to move at this ply
+
+    # Build PGN incrementally.
+    pgn_game = chess.pgn.Game()
+    pgn_game.headers["Event"] = "AlphaCharles self-play"
+    pgn_game.headers["White"] = "AlphaCharles"
+    pgn_game.headers["Black"] = "AlphaCharles"
+    pgn_node = pgn_game
 
     result_winner: int | None = None  # 1 white, -1 black, 0 draw
     reuse_root = None
@@ -91,6 +100,7 @@ def play_game(net, device: torch.device, cfg: SelfPlayConfig | None = None,
         # Re-root: the chosen edge's subtree becomes the new root.
         next_root = root.children[edge]
         board.push(move)
+        pgn_node = pgn_node.add_variation(move)
         reuse_root = next_root if next_root is not None else None
         ply += 1
 
@@ -107,10 +117,13 @@ def play_game(net, device: torch.device, cfg: SelfPlayConfig | None = None,
             values[i] = 1.0 if mover_side == result_winner else -1.0
 
     result_str = {1: "1-0", -1: "0-1", 0: "1/2-1/2"}[result_winner]
+    pgn_game.headers["Result"] = result_str
+    pgn_game.headers["PlyCount"] = str(ply)
     return GameRecord(
         planes=np.stack(traj_planes) if traj_planes else np.empty((0, 119, 8, 8), dtype=np.float32),
         policies=np.stack(traj_policies) if traj_policies else np.empty((0, POLICY_SIZE), dtype=np.float32),
         values=values,
         result=result_str,
         ply_count=ply,
+        pgn=str(pgn_game),
     )

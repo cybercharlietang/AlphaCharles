@@ -1,0 +1,8 @@
+# Allow tracked text artifacts under artifacts/ but exclude binary data
+*
+!.gitignore
+!**/*.txt
+!**/*.log
+!**/*.pgn
+!**/*.md
+!**/

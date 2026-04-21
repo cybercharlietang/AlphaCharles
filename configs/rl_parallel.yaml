@@ -1,0 +1,35 @@
+output_dir: runs/rl_parallel
+seed_from: runs/sl_warmstart/final.pt    # RL starts from sl_warmstart (best eval)
+total_steps: 20000
+replay_capacity: 500000
+warmup_games: 32                         # wait for this many games before first training step
+publish_weights_every: 500               # trainer publishes new weights every N steps
+ckpt_every: 2000
+log_every: 50
+wandb: false
+run_name: rl_parallel_from_sl_warmstart
+
+move_limit: 400
+resign_threshold: -0.95
+resign_after_move: 20
+
+model:
+  channels: 256
+  num_blocks: 20
+
+train:
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  batch_size: 1024
+  policy_loss_weight: 1.0
+  value_loss_weight: 1.0
+  grad_clip: 5.0
+
+mcts:
+  c_puct: 2.5
+  num_simulations: 200                   # 2x faster than 400 for self-play
+  dirichlet_alpha: 0.3
+  dirichlet_epsilon: 0.25
+  add_root_noise: true
+  temperature_moves: 30
+  fpu: 0.0

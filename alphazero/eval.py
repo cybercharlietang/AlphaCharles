@@ -19,12 +19,15 @@ against it, which we convert to a reference Elo.
 
 from __future__ import annotations
 
+import datetime
 import math
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from pathlib import Path
 
 import chess
 import chess.engine
+import chess.pgn
 import torch
 
 from .mcts import MCTS, MCTSConfig
@@ -39,6 +42,8 @@ class MatchConfig:
     opp_movetime_ms: int | None = None
     our_temperature: float = 0.0
     starting_fens: list[str] | None = None  # sample from these to diversify openings
+    pgn_dir: str | None = None  # if set, save each game's PGN here
+    our_name: str = "AlphaCharles"
 
 
 @dataclass
@@ -86,11 +91,25 @@ def play_match(
         limit = chess.engine.Limit(depth=cfg.opp_depth)
 
     wins = losses = draws = 0
+    opp_label = (f"Stockfish_d{cfg.opp_depth}" if cfg.opp_depth
+                 else f"Stockfish_n{cfg.opp_nodes}" if cfg.opp_nodes
+                 else f"Stockfish_t{cfg.opp_movetime_ms}ms")
+    pgn_dir = Path(cfg.pgn_dir) if cfg.pgn_dir else None
+    if pgn_dir:
+        pgn_dir.mkdir(parents=True, exist_ok=True)
     try:
         for g in range(cfg.n_games):
             board = chess.Board(cfg.starting_fens[g % len(cfg.starting_fens)]
                                 if cfg.starting_fens else chess.STARTING_FEN)
             our_color = chess.WHITE if (not our_color_alternates or g % 2 == 0) else chess.BLACK
+
+            pgn_game = chess.pgn.Game()
+            pgn_game.headers["Event"] = f"{cfg.our_name} vs {opp_label}"
+            pgn_game.headers["White"] = cfg.our_name if our_color == chess.WHITE else opp_label
+            pgn_game.headers["Black"] = opp_label if our_color == chess.WHITE else cfg.our_name
+            pgn_game.headers["Date"] = datetime.date.today().isoformat()
+            pgn_game.headers["Round"] = str(g + 1)
+            pgn_node = pgn_game
 
             while not board.is_game_over(claim_draw=True) and board.fullmove_number < 400:
                 if board.turn == our_color:
@@ -100,6 +119,7 @@ def play_match(
                     result = engine.play(board, limit)
                     move = result.move
                 board.push(move)
+                pgn_node = pgn_node.add_variation(move)
 
             outcome = board.outcome(claim_draw=True)
             if outcome is None or outcome.winner is None:
@@ -111,6 +131,12 @@ def play_match(
             else:
                 losses += 1
                 res_str = "0-1" if our_color == chess.WHITE else "1-0"
+            pgn_game.headers["Result"] = res_str
+
+            if pgn_dir:
+                path = pgn_dir / f"{cfg.our_name}_vs_{opp_label}_g{g+1:02d}_{res_str.replace('/', '-')}.pgn"
+                with open(path, "w") as fh:
+                    print(pgn_game, file=fh, end="\n\n")
 
             if print_games:
                 print(f"game {g+1}: we={('W' if our_color==chess.WHITE else 'B')} "

@@ -10,6 +10,6 @@ runs/
 wandb/
 .venv/
 .env
-artifacts/
+# artifacts/: see artifacts/.gitignore (allow text/logs/pgn, exclude binaries)
 *.egg-info/
 .DS_Store

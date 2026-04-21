@@ -101,24 +101,30 @@ class MCTS:
     # ---- Network eval ------------------------------------------------------
 
     @torch.no_grad()
-    def _evaluate(self, board: chess.Board) -> tuple[np.ndarray, float]:
-        """Run the net on a single position. Returns (priors_over_legal, value).
+    def _evaluate(self, board: chess.Board) -> tuple[np.ndarray, float, list[chess.Move]]:
+        """Run the net on a single position. Returns (priors, value, legal_moves).
 
-        priors_over_legal is a 1D array of length = #legal_moves, summing to 1.
-        value is from POV of side-to-move at `board`.
+        CRITICAL: priors[i] corresponds to legal_moves[i] (python-chess iteration order),
+        not to ascending policy-index order. This is the order used throughout MCTS.
+        Getting the alignment wrong silently scrambles priors w.r.t. moves.
         """
         x = torch.from_numpy(encode_board(board)).unsqueeze(0).to(self.device)
         logits, value = self.net(x)
         logits = logits.squeeze(0).cpu().numpy()   # (4672,)
         value = float(value.squeeze(0).cpu().item())
 
-        mask = legal_move_mask(board)
-        # Softmax restricted to legal moves for numerical stability.
-        legal_logits = logits[mask]
+        legal_moves = list(board.legal_moves)
+        if not legal_moves:
+            return np.empty(0, dtype=np.float32), value, legal_moves
+        idx = np.fromiter(
+            (move_to_index(m, board) for m in legal_moves),
+            dtype=np.int64, count=len(legal_moves),
+        )
+        legal_logits = logits[idx]
         legal_logits -= legal_logits.max()
         exp = np.exp(legal_logits)
-        priors = exp / exp.sum()
-        return priors.astype(np.float32), value
+        priors = (exp / exp.sum()).astype(np.float32)
+        return priors, value, legal_moves
 
     # ---- Node expansion ----------------------------------------------------
 
@@ -131,14 +137,13 @@ class MCTS:
             node.is_expanded = True
             return term
 
-        priors, value = self._evaluate(node.board)
-        legal = list(node.board.legal_moves)
+        priors, value, legal = self._evaluate(node.board)
         node.legal_moves = legal
         node.move_indices = np.fromiter(
             (move_to_index(m, node.board) for m in legal),
             dtype=np.int32, count=len(legal),
         )
-        node.P = priors
+        node.P = priors  # aligned with `legal` by construction
         node.N = np.zeros(len(legal), dtype=np.int32)
         node.W = np.zeros(len(legal), dtype=np.float32)
         node.children = [None] * len(legal)

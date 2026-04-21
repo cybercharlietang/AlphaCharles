@@ -115,6 +115,41 @@ def test_temperature_zero_is_argmax(tiny_net):
     assert (pi > 0).sum() == 1
 
 
+def test_priors_aligned_with_legal_moves():
+    """Regression test: MCTS must attach net priors to the CORRECT moves.
+
+    Build a toy net whose logits sharply favour a specific known move index
+    (c2c4's index from startpos). Run MCTS and verify that MCTS's top visits
+    go to c4 itself — not some scrambled move. The previous bug indexed priors
+    by ascending policy-index order, while legal_moves iterate in piece-type order.
+    """
+    from alphazero.encoding import POLICY_SIZE, move_to_index
+    import torch.nn as nn
+
+    class SpikedNet(nn.Module):
+        def __init__(self, spike_idx):
+            super().__init__()
+            self.spike_idx = spike_idx
+        def forward(self, x):
+            B = x.shape[0]
+            logits = torch.full((B, POLICY_SIZE), -10.0)
+            logits[:, self.spike_idx] = 10.0
+            value = torch.zeros(B)
+            return logits, value
+
+    board = chess.Board()
+    c2c4 = chess.Move.from_uci("c2c4")
+    spike_idx = move_to_index(c2c4, board)
+    net = SpikedNet(spike_idx)
+
+    mcts = MCTS(net, torch.device("cpu"),
+                MCTSConfig(num_simulations=64, add_root_noise=False))
+    root = mcts.run(board)
+    best_edge = int(np.argmax(root.N))
+    assert root.legal_moves[best_edge] == c2c4, (
+        f"MCTS picked {root.legal_moves[best_edge].uci()} but net spiked c2c4")
+
+
 def test_dirichlet_noise_changes_priors(tiny_net):
     mcts = MCTS(tiny_net, torch.device("cpu"),
                 MCTSConfig(num_simulations=1, add_root_noise=False))

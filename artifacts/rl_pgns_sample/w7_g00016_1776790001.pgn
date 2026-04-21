@@ -1,0 +1,10 @@
+[Event "AlphaCharles self-play"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "AlphaCharles"]
+[Black "AlphaCharles"]
+[Result "1-0"]
+[PlyCount "11"]
+
+1. f4 Nh6 2. Nf3 g5 3. Nxg5 f6 4. e4 c6 5. Qh5+ Nf7 6. Qxf7# 1-0
