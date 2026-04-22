@@ -17,3 +17,10 @@ game 14: we=B result=1-0  score so far: 1/4/9
 game 15: we=W result=1/2-1/2  score so far: 1/5/9
 game 16: we=B result=1-0  score so far: 1/5/10
 game 17: we=W result=1/2-1/2  score so far: 1/6/10
+game 18: we=B result=1-0  score so far: 1/6/11
+game 19: we=W result=0-1  score so far: 1/6/12
+game 20: we=B result=1-0  score so far: 1/6/13
+
+W/D/L: 1/6/13 of 20
+score: 0.200
+elo diff vs stockfish depth=7: -241 ± 97

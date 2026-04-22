@@ -18,13 +18,13 @@ A practical chess engine trained from scratch on a 3-day, 8×H100 RunPod budget
 
 ## Strength
 
-### vs Stockfish at 1600 MCTS sims (inference config, 60-game gauntlet)
+### vs Stockfish at 1600 MCTS sims (inference config, 60-game gauntlet — final)
 
 | Opponent | Games | W / D / L | Score | Elo diff |
 |---|---:|---:|---:|---:|
-| Stockfish depth 3 | ~20 | 17 / 0 / 1 | **0.94** | +~480 |
-| Stockfish depth 5 | ~20 | 9 / 3 / 5 | ~0.56 | +~45 |
-| Stockfish depth 7 | ~20 | 1 / 6 / 10 | ~0.35 | −~110 |
+| Stockfish depth 3 | 20 | **19 / 0 / 1** | **0.950** | **+512 ± 178** |
+| Stockfish depth 5 | 20 | **12 / 3 / 5** | **0.675** | **+127 ± 83** |
+| Stockfish depth 7 | 20 | 1 / 6 / 13 | 0.200 | −241 ± 97 |
 
 ### vs Stockfish at 400 MCTS sims (training-time sim count, earlier 40-game run)
 
