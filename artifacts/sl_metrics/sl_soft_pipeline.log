@@ -1,0 +1,1011 @@
+W0421 23:47:05.496000 720862 torch/distributed/run.py:793] 
+W0421 23:47:05.496000 720862 torch/distributed/run.py:793] *****************************************
+W0421 23:47:05.496000 720862 torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0421 23:47:05.496000 720862 torch/distributed/run.py:793] *****************************************
+dataset size: 15,000,000
+step=50 | grad_norm=1.152 | steps/s=4.2
+step=50 | total=8.332 | policy=7.419 | value=0.913 | lr=0.000 | steps/s=0.0
+step=50 | entropy=8.192 | corr=0.074 | steps/s=0.0
+step=50 | steps/s=0.0
+step=50 | steps/s=0.0
+step=100 | grad_norm=1.991 | steps/s=6.1
+step=100 | total=7.325 | policy=6.456 | value=0.868 | lr=0.000 | steps/s=0.0
+step=100 | entropy=7.905 | corr=0.221 | steps/s=0.0
+step=100 | steps/s=0.0
+step=100 | steps/s=0.0
+step=150 | grad_norm=1.395 | steps/s=6.1
+step=150 | total=6.410 | policy=5.537 | value=0.873 | lr=0.001 | steps/s=0.0
+step=150 | entropy=6.714 | corr=0.217 | steps/s=0.0
+step=150 | steps/s=0.0
+step=150 | steps/s=0.0
+step=200 | grad_norm=2.275 | steps/s=6.0
+step=200 | total=5.453 | policy=4.557 | value=0.896 | lr=0.001 | steps/s=0.0
+step=200 | entropy=5.663 | corr=0.227 | steps/s=0.0
+step=200 | steps/s=0.0
+step=200 | steps/s=0.0
+step=250 | grad_norm=1.395 | steps/s=6.0
+step=250 | total=4.587 | policy=3.743 | value=0.844 | lr=0.001 | steps/s=0.0
+step=250 | entropy=4.597 | corr=0.270 | steps/s=0.0
+step=250 | steps/s=0.0
+step=250 | steps/s=0.0
+step=300 | grad_norm=1.283 | steps/s=6.0
+step=300 | total=3.990 | policy=3.133 | value=0.857 | lr=0.002 | steps/s=0.0
+step=300 | entropy=3.706 | corr=0.264 | steps/s=0.0
+step=300 | steps/s=0.0
+step=300 | steps/s=0.0
+step=350 | grad_norm=1.211 | steps/s=6.0
+step=350 | total=3.603 | policy=2.754 | value=0.849 | lr=0.002 | steps/s=0.0
+step=350 | entropy=3.314 | corr=0.271 | steps/s=0.0
+step=350 | steps/s=0.0
+step=350 | steps/s=0.0
+step=400 | grad_norm=0.931 | steps/s=6.0
+step=400 | total=3.498 | policy=2.641 | value=0.856 | lr=0.002 | steps/s=0.0
+step=400 | entropy=2.969 | corr=0.275 | steps/s=0.0
+step=400 | steps/s=0.0
+step=400 | steps/s=0.0
+step=450 | grad_norm=1.292 | steps/s=5.8
+step=450 | total=3.325 | policy=2.483 | value=0.841 | lr=0.002 | steps/s=0.0
+step=450 | entropy=2.748 | corr=0.268 | steps/s=0.0
+step=450 | steps/s=0.0
+step=450 | steps/s=0.0
+step=500 | grad_norm=0.799 | steps/s=5.1
+step=500 | total=3.160 | policy=2.325 | value=0.835 | lr=0.002 | steps/s=0.0
+step=500 | entropy=2.649 | corr=0.298 | steps/s=0.0
+step=500 | steps/s=0.0
+step=500 | steps/s=0.0
+step=550 | grad_norm=0.721 | steps/s=6.0
+step=550 | total=3.042 | policy=2.204 | value=0.838 | lr=0.002 | steps/s=0.0
+step=550 | entropy=2.393 | corr=0.296 | steps/s=0.0
+step=550 | steps/s=0.0
+step=550 | steps/s=0.0
+step=600 | grad_norm=0.673 | steps/s=6.0
+step=600 | total=2.993 | policy=2.148 | value=0.845 | lr=0.002 | steps/s=0.0
+step=600 | entropy=2.301 | corr=0.279 | steps/s=0.0
+step=600 | steps/s=0.0
+step=600 | steps/s=0.0
+step=650 | grad_norm=0.665 | steps/s=6.0
+step=650 | total=2.949 | policy=2.121 | value=0.828 | lr=0.002 | steps/s=0.0
+step=650 | entropy=2.260 | corr=0.301 | steps/s=0.0
+step=650 | steps/s=0.0
+step=650 | steps/s=0.0
+step=700 | grad_norm=0.557 | steps/s=6.1
+step=700 | total=2.827 | policy=2.011 | value=0.816 | lr=0.002 | steps/s=0.0
+step=700 | entropy=2.149 | corr=0.329 | steps/s=0.0
+step=700 | steps/s=0.0
+step=700 | steps/s=0.0
+step=750 | grad_norm=0.618 | steps/s=6.0
+step=750 | total=2.787 | policy=1.974 | value=0.814 | lr=0.002 | steps/s=0.0
+step=750 | entropy=2.112 | corr=0.322 | steps/s=0.0
+step=750 | steps/s=0.0
+step=750 | steps/s=0.0
+step=800 | grad_norm=0.647 | steps/s=6.1
+step=800 | total=2.773 | policy=1.956 | value=0.816 | lr=0.002 | steps/s=0.0
+step=800 | entropy=2.043 | corr=0.318 | steps/s=0.0
+step=800 | steps/s=0.0
+step=800 | steps/s=0.0
+step=850 | grad_norm=0.525 | steps/s=6.0
+step=850 | total=2.719 | policy=1.900 | value=0.818 | lr=0.002 | steps/s=0.0
+step=850 | entropy=1.994 | corr=0.325 | steps/s=0.0
+step=850 | steps/s=0.0
+step=850 | steps/s=0.0
+step=900 | grad_norm=0.549 | steps/s=6.0
+step=900 | total=2.676 | policy=1.871 | value=0.805 | lr=0.002 | steps/s=0.0
+step=900 | entropy=1.973 | corr=0.349 | steps/s=0.0
+step=900 | steps/s=0.0
+step=900 | steps/s=0.0
+step=950 | grad_norm=0.476 | steps/s=5.1
+step=950 | total=2.621 | policy=1.808 | value=0.813 | lr=0.002 | steps/s=0.0
+step=950 | entropy=1.882 | corr=0.327 | steps/s=0.0
+step=950 | steps/s=0.0
+step=950 | steps/s=0.0
+step=1000 | grad_norm=0.568 | steps/s=6.0
+step=1000 | total=2.602 | policy=1.778 | value=0.824 | lr=0.002 | steps/s=0.0
+step=1000 | entropy=1.885 | corr=0.318 | steps/s=0.0
+step=1000 | steps/s=0.0
+step=1000 | steps/s=0.0
+step=1050 | grad_norm=0.452 | steps/s=6.0
+step=1050 | total=2.612 | policy=1.789 | value=0.823 | lr=0.002 | steps/s=0.0
+step=1050 | entropy=1.859 | corr=0.316 | steps/s=0.0
+step=1050 | steps/s=0.0
+step=1050 | steps/s=0.0
+step=1100 | grad_norm=0.439 | steps/s=5.8
+step=1100 | total=2.577 | policy=1.764 | value=0.813 | lr=0.002 | steps/s=0.0
+step=1100 | entropy=1.859 | corr=0.337 | steps/s=0.0
+step=1100 | steps/s=0.0
+step=1100 | steps/s=0.0
+step=1150 | grad_norm=0.451 | steps/s=6.0
+step=1150 | total=2.580 | policy=1.769 | value=0.811 | lr=0.002 | steps/s=0.0
+step=1150 | entropy=1.852 | corr=0.339 | steps/s=0.0
+step=1150 | steps/s=0.0
+step=1150 | steps/s=0.0
+step=1200 | grad_norm=0.419 | steps/s=6.0
+step=1200 | total=2.604 | policy=1.798 | value=0.807 | lr=0.002 | steps/s=0.0
+step=1200 | entropy=1.831 | corr=0.329 | steps/s=0.0
+step=1200 | steps/s=0.0
+step=1200 | steps/s=0.0
+step=1250 | grad_norm=0.445 | steps/s=6.0
+step=1250 | total=2.577 | policy=1.766 | value=0.810 | lr=0.002 | steps/s=0.0
+step=1250 | entropy=1.777 | corr=0.333 | steps/s=0.0
+step=1250 | steps/s=0.0
+step=1250 | steps/s=0.0
+step=1300 | grad_norm=0.444 | steps/s=6.0
+step=1300 | total=2.614 | policy=1.794 | value=0.820 | lr=0.002 | steps/s=0.0
+step=1300 | entropy=1.796 | corr=0.321 | steps/s=0.0
+step=1300 | steps/s=0.0
+step=1300 | steps/s=0.0
+step=1350 | grad_norm=0.385 | steps/s=6.0
+step=1350 | total=2.511 | policy=1.706 | value=0.806 | lr=0.002 | steps/s=0.0
+step=1350 | entropy=1.742 | corr=0.339 | steps/s=0.0
+step=1350 | steps/s=0.0
+step=1350 | steps/s=0.0
+step=1400 | grad_norm=0.380 | steps/s=5.0
+step=1400 | total=2.494 | policy=1.684 | value=0.810 | lr=0.002 | steps/s=0.0
+step=1400 | entropy=1.704 | corr=0.346 | steps/s=0.0
+step=1400 | steps/s=0.0
+step=1400 | steps/s=0.0
+step=1450 | grad_norm=0.388 | steps/s=6.0
+step=1450 | total=2.473 | policy=1.677 | value=0.796 | lr=0.002 | steps/s=0.0
+step=1450 | entropy=1.716 | corr=0.349 | steps/s=0.0
+step=1450 | steps/s=0.0
+step=1450 | steps/s=0.0
+step=1500 | grad_norm=0.397 | steps/s=6.0
+step=1500 | total=2.509 | policy=1.693 | value=0.817 | lr=0.002 | steps/s=0.0
+step=1500 | entropy=1.727 | corr=0.320 | steps/s=0.0
+step=1500 | steps/s=0.0
+step=1500 | steps/s=0.0
+step=1550 | grad_norm=0.446 | steps/s=5.8
+step=1550 | total=2.496 | policy=1.681 | value=0.816 | lr=0.002 | steps/s=0.0
+step=1550 | entropy=1.697 | corr=0.324 | steps/s=0.0
+step=1550 | steps/s=0.0
+step=1550 | steps/s=0.0
+step=1600 | grad_norm=0.374 | steps/s=6.0
+step=1600 | total=2.538 | policy=1.719 | value=0.818 | lr=0.002 | steps/s=0.0
+step=1600 | entropy=1.706 | corr=0.332 | steps/s=0.0
+step=1600 | steps/s=0.0
+step=1600 | steps/s=0.0
+step=1650 | grad_norm=0.354 | steps/s=6.0
+step=1650 | total=2.454 | policy=1.643 | value=0.811 | lr=0.002 | steps/s=0.0
+step=1650 | entropy=1.654 | corr=0.334 | steps/s=0.0
+step=1650 | steps/s=0.0
+step=1650 | steps/s=0.0
+step=1700 | grad_norm=0.398 | steps/s=6.1
+step=1700 | total=2.484 | policy=1.671 | value=0.813 | lr=0.002 | steps/s=0.0
+step=1700 | entropy=1.674 | corr=0.335 | steps/s=0.0
+step=1700 | steps/s=0.0
+step=1700 | steps/s=0.0
+step=1750 | grad_norm=0.444 | steps/s=5.8
+step=1750 | total=2.463 | policy=1.651 | value=0.811 | lr=0.002 | steps/s=0.0
+step=1750 | entropy=1.658 | corr=0.338 | steps/s=0.0
+step=1750 | steps/s=0.0
+step=1750 | steps/s=0.0
+step=1800 | grad_norm=0.319 | steps/s=5.8
+step=1800 | total=2.444 | policy=1.641 | value=0.802 | lr=0.002 | steps/s=0.0
+step=1800 | entropy=1.699 | corr=0.356 | steps/s=0.0
+step=1800 | steps/s=0.0
+step=1800 | steps/s=0.0
+step=1850 | grad_norm=0.344 | steps/s=5.0
+step=1850 | total=2.403 | policy=1.603 | value=0.800 | lr=0.002 | steps/s=0.0
+step=1850 | entropy=1.603 | corr=0.358 | steps/s=0.0
+step=1850 | steps/s=0.0
+step=1850 | steps/s=0.0
+step=1900 | grad_norm=0.352 | steps/s=5.9
+step=1900 | total=2.381 | policy=1.584 | value=0.797 | lr=0.002 | steps/s=0.0
+step=1900 | entropy=1.624 | corr=0.365 | steps/s=0.0
+step=1900 | steps/s=0.0
+step=1900 | steps/s=0.0
+step=1950 | grad_norm=0.363 | steps/s=6.0
+step=1950 | total=2.436 | policy=1.637 | value=0.799 | lr=0.002 | steps/s=0.0
+step=1950 | entropy=1.618 | corr=0.343 | steps/s=0.0
+step=1950 | steps/s=0.0
+step=1950 | steps/s=0.0
+step=2000 | grad_norm=0.324 | steps/s=6.1
+step=2000 | total=2.434 | policy=1.635 | value=0.800 | lr=0.002 | steps/s=0.0
+step=2000 | entropy=1.650 | corr=0.360 | steps/s=0.0
+step=2000 | steps/s=0.0
+step=2000 | steps/s=0.0
+  saved runs/sl_soft/ckpt_0002000.pt
+step=2050 | grad_norm=0.309 | steps/s=5.9
+step=2050 | total=2.432 | policy=1.623 | value=0.809 | lr=0.002 | steps/s=0.0
+step=2050 | entropy=1.628 | corr=0.350 | steps/s=0.0
+step=2050 | steps/s=0.0
+step=2050 | steps/s=0.0
+step=2100 | grad_norm=0.346 | steps/s=6.1
+step=2100 | total=2.404 | policy=1.607 | value=0.797 | lr=0.002 | steps/s=0.0
+step=2100 | entropy=1.611 | corr=0.351 | steps/s=0.0
+step=2100 | steps/s=0.0
+step=2100 | steps/s=0.0
+step=2150 | grad_norm=0.342 | steps/s=6.1
+step=2150 | total=2.455 | policy=1.650 | value=0.805 | lr=0.002 | steps/s=0.0
+step=2150 | entropy=1.640 | corr=0.342 | steps/s=0.0
+step=2150 | steps/s=0.0
+step=2150 | steps/s=0.0
+step=2200 | grad_norm=0.299 | steps/s=6.1
+step=2200 | total=2.432 | policy=1.624 | value=0.808 | lr=0.002 | steps/s=0.0
+step=2200 | entropy=1.628 | corr=0.338 | steps/s=0.0
+step=2200 | steps/s=0.0
+step=2200 | steps/s=0.0
+step=2250 | grad_norm=0.324 | steps/s=6.1
+step=2250 | total=2.367 | policy=1.569 | value=0.798 | lr=0.002 | steps/s=0.0
+step=2250 | entropy=1.558 | corr=0.354 | steps/s=0.0
+step=2250 | steps/s=0.0
+step=2250 | steps/s=0.0
+step=2300 | grad_norm=0.313 | steps/s=5.0
+step=2300 | total=2.295 | policy=1.512 | value=0.783 | lr=0.002 | steps/s=0.0
+step=2300 | entropy=1.544 | corr=0.376 | steps/s=0.0
+step=2300 | steps/s=0.0
+step=2300 | steps/s=0.0
+step=2350 | grad_norm=0.312 | steps/s=6.0
+step=2350 | total=2.323 | policy=1.538 | value=0.785 | lr=0.002 | steps/s=0.0
+step=2350 | entropy=1.572 | corr=0.362 | steps/s=0.0
+step=2350 | steps/s=0.0
+step=2350 | steps/s=0.0
+step=2400 | grad_norm=0.305 | steps/s=6.0
+step=2400 | total=2.395 | policy=1.593 | value=0.803 | lr=0.002 | steps/s=0.0
+step=2400 | entropy=1.564 | corr=0.349 | steps/s=0.0
+step=2400 | steps/s=0.0
+step=2400 | steps/s=0.0
+step=2450 | grad_norm=0.298 | steps/s=5.9
+step=2450 | total=2.340 | policy=1.544 | value=0.796 | lr=0.002 | steps/s=0.0
+step=2450 | entropy=1.541 | corr=0.361 | steps/s=0.0
+step=2450 | steps/s=0.0
+step=2450 | steps/s=0.0
+step=2500 | grad_norm=0.335 | steps/s=6.0
+step=2500 | total=2.287 | policy=1.491 | value=0.796 | lr=0.002 | steps/s=0.0
+step=2500 | entropy=1.546 | corr=0.357 | steps/s=0.0
+step=2500 | steps/s=0.0
+step=2500 | steps/s=0.0
+step=2550 | grad_norm=0.313 | steps/s=6.0
+step=2550 | total=2.348 | policy=1.536 | value=0.812 | lr=0.002 | steps/s=0.0
+step=2550 | entropy=1.555 | corr=0.328 | steps/s=0.0
+step=2550 | steps/s=0.0
+step=2550 | steps/s=0.0
+step=2600 | grad_norm=0.299 | steps/s=6.0
+step=2600 | total=2.374 | policy=1.584 | value=0.790 | lr=0.002 | steps/s=0.0
+step=2600 | entropy=1.548 | corr=0.369 | steps/s=0.0
+step=2600 | steps/s=0.0
+step=2600 | steps/s=0.0
+step=2650 | grad_norm=0.286 | steps/s=6.0
+step=2650 | total=2.325 | policy=1.535 | value=0.790 | lr=0.002 | steps/s=0.0
+step=2650 | entropy=1.556 | corr=0.365 | steps/s=0.0
+step=2650 | steps/s=0.0
+step=2650 | steps/s=0.0
+step=2700 | grad_norm=0.256 | steps/s=6.0
+step=2700 | total=2.309 | policy=1.522 | value=0.787 | lr=0.002 | steps/s=0.0
+step=2700 | entropy=1.543 | corr=0.383 | steps/s=0.0
+step=2700 | steps/s=0.0
+step=2700 | steps/s=0.0
+step=2750 | grad_norm=0.339 | steps/s=5.0
+step=2750 | total=2.254 | policy=1.477 | value=0.776 | lr=0.002 | steps/s=0.0
+step=2750 | entropy=1.493 | corr=0.390 | steps/s=0.0
+step=2750 | steps/s=0.0
+step=2750 | steps/s=0.0
+step=2800 | grad_norm=0.331 | steps/s=6.0
+step=2800 | total=2.262 | policy=1.476 | value=0.787 | lr=0.002 | steps/s=0.0
+step=2800 | entropy=1.501 | corr=0.375 | steps/s=0.0
+step=2800 | steps/s=0.0
+step=2800 | steps/s=0.0
+step=2850 | grad_norm=0.322 | steps/s=5.9
+step=2850 | total=2.276 | policy=1.477 | value=0.799 | lr=0.002 | steps/s=0.0
+step=2850 | entropy=1.495 | corr=0.358 | steps/s=0.0
+step=2850 | steps/s=0.0
+step=2850 | steps/s=0.0
+step=2900 | grad_norm=0.305 | steps/s=6.0
+step=2900 | total=2.338 | policy=1.546 | value=0.792 | lr=0.002 | steps/s=0.0
+step=2900 | entropy=1.533 | corr=0.362 | steps/s=0.0
+step=2900 | steps/s=0.0
+step=2900 | steps/s=0.0
+step=2950 | grad_norm=0.302 | steps/s=6.0
+step=2950 | total=2.315 | policy=1.517 | value=0.797 | lr=0.002 | steps/s=0.0
+step=2950 | entropy=1.556 | corr=0.369 | steps/s=0.0
+step=2950 | steps/s=0.0
+step=2950 | steps/s=0.0
+step=3000 | grad_norm=0.284 | steps/s=6.0
+step=3000 | total=2.261 | policy=1.498 | value=0.763 | lr=0.002 | steps/s=0.0
+step=3000 | entropy=1.538 | corr=0.400 | steps/s=0.0
+step=3000 | steps/s=0.0
+step=3000 | steps/s=0.0
+step=3050 | grad_norm=0.294 | steps/s=6.0
+step=3050 | total=2.292 | policy=1.514 | value=0.778 | lr=0.002 | steps/s=0.0
+step=3050 | entropy=1.542 | corr=0.380 | steps/s=0.0
+step=3050 | steps/s=0.0
+step=3050 | steps/s=0.0
+step=3100 | grad_norm=0.321 | steps/s=5.9
+step=3100 | total=2.318 | policy=1.541 | value=0.777 | lr=0.002 | steps/s=0.0
+step=3100 | entropy=1.531 | corr=0.389 | steps/s=0.0
+step=3100 | steps/s=0.0
+step=3100 | steps/s=0.0
+step=3150 | grad_norm=0.265 | steps/s=6.0
+step=3150 | total=2.316 | policy=1.532 | value=0.784 | lr=0.002 | steps/s=0.0
+step=3150 | entropy=1.535 | corr=0.371 | steps/s=0.0
+step=3150 | steps/s=0.0
+step=3150 | steps/s=0.0
+step=3200 | grad_norm=0.335 | steps/s=5.1
+step=3200 | total=2.227 | policy=1.465 | value=0.762 | lr=0.002 | steps/s=0.0
+step=3200 | entropy=1.524 | corr=0.407 | steps/s=0.0
+step=3200 | steps/s=0.0
+step=3200 | steps/s=0.0
+step=3250 | grad_norm=0.335 | steps/s=6.1
+step=3250 | total=2.176 | policy=1.417 | value=0.759 | lr=0.002 | steps/s=0.0
+step=3250 | entropy=1.472 | corr=0.415 | steps/s=0.0
+step=3250 | steps/s=0.0
+step=3250 | steps/s=0.0
+step=3300 | grad_norm=0.312 | steps/s=5.9
+step=3300 | total=2.249 | policy=1.476 | value=0.772 | lr=0.002 | steps/s=0.0
+step=3300 | entropy=1.459 | corr=0.392 | steps/s=0.0
+step=3300 | steps/s=0.0
+step=3300 | steps/s=0.0
+step=3350 | grad_norm=0.334 | steps/s=6.0
+step=3350 | total=2.265 | policy=1.475 | value=0.790 | lr=0.002 | steps/s=0.0
+step=3350 | entropy=1.457 | corr=0.370 | steps/s=0.0
+step=3350 | steps/s=0.0
+step=3350 | steps/s=0.0
+step=3400 | grad_norm=0.307 | steps/s=6.0
+step=3400 | total=2.285 | policy=1.501 | value=0.783 | lr=0.002 | steps/s=0.0
+step=3400 | entropy=1.503 | corr=0.387 | steps/s=0.0
+step=3400 | steps/s=0.0
+step=3400 | steps/s=0.0
+step=3450 | grad_norm=0.336 | steps/s=6.0
+step=3450 | total=2.262 | policy=1.488 | value=0.773 | lr=0.002 | steps/s=0.0
+step=3450 | entropy=1.537 | corr=0.392 | steps/s=0.0
+step=3450 | steps/s=0.0
+step=3450 | steps/s=0.0
+step=3500 | grad_norm=0.277 | steps/s=6.0
+step=3500 | total=2.257 | policy=1.491 | value=0.766 | lr=0.002 | steps/s=0.0
+step=3500 | entropy=1.501 | corr=0.397 | steps/s=0.0
+step=3500 | steps/s=0.0
+step=3500 | steps/s=0.0
+step=3550 | grad_norm=0.282 | steps/s=6.1
+step=3550 | total=2.215 | policy=1.443 | value=0.771 | lr=0.002 | steps/s=0.0
+step=3550 | entropy=1.447 | corr=0.390 | steps/s=0.0
+step=3550 | steps/s=0.0
+step=3550 | steps/s=0.0
+step=3600 | grad_norm=0.276 | steps/s=6.0
+step=3600 | total=2.274 | policy=1.495 | value=0.780 | lr=0.002 | steps/s=0.0
+step=3600 | entropy=1.515 | corr=0.381 | steps/s=0.0
+step=3600 | steps/s=0.0
+step=3600 | steps/s=0.0
+step=3650 | grad_norm=0.289 | steps/s=6.0
+step=3650 | total=2.276 | policy=1.510 | value=0.766 | lr=0.002 | steps/s=0.0
+step=3650 | entropy=1.495 | corr=0.399 | steps/s=0.0
+step=3650 | steps/s=0.0
+step=3650 | steps/s=0.0
+step=3700 | grad_norm=0.289 | steps/s=5.2
+step=3700 | total=2.192 | policy=1.451 | value=0.741 | lr=0.002 | steps/s=0.0
+step=3700 | entropy=1.438 | corr=0.427 | steps/s=0.0
+step=3700 | steps/s=0.0
+step=3700 | steps/s=0.0
+step=3750 | grad_norm=0.281 | steps/s=6.0
+step=3750 | total=2.157 | policy=1.412 | value=0.745 | lr=0.002 | steps/s=0.0
+step=3750 | entropy=1.429 | corr=0.427 | steps/s=0.0
+step=3750 | steps/s=0.0
+step=3750 | steps/s=0.0
+step=3800 | grad_norm=0.305 | steps/s=6.0
+step=3800 | total=2.180 | policy=1.443 | value=0.738 | lr=0.002 | steps/s=0.0
+step=3800 | entropy=1.432 | corr=0.437 | steps/s=0.0
+step=3800 | steps/s=0.0
+step=3800 | steps/s=0.0
+step=3850 | grad_norm=0.306 | steps/s=6.0
+step=3850 | total=2.240 | policy=1.471 | value=0.769 | lr=0.002 | steps/s=0.0
+step=3850 | entropy=1.480 | corr=0.406 | steps/s=0.0
+step=3850 | steps/s=0.0
+step=3850 | steps/s=0.0
+step=3900 | grad_norm=0.349 | steps/s=6.0
+step=3900 | total=2.165 | policy=1.414 | value=0.750 | lr=0.002 | steps/s=0.0
+step=3900 | entropy=1.440 | corr=0.430 | steps/s=0.0
+step=3900 | steps/s=0.0
+step=3900 | steps/s=0.0
+step=3950 | grad_norm=0.308 | steps/s=6.0
+step=3950 | total=2.234 | policy=1.486 | value=0.748 | lr=0.002 | steps/s=0.0
+step=3950 | entropy=1.461 | corr=0.423 | steps/s=0.0
+step=3950 | steps/s=0.0
+step=3950 | steps/s=0.0
+step=4000 | grad_norm=0.308 | steps/s=6.0
+step=4000 | total=2.244 | policy=1.480 | value=0.763 | lr=0.002 | steps/s=0.0
+step=4000 | entropy=1.468 | corr=0.410 | steps/s=0.0
+step=4000 | steps/s=0.0
+step=4000 | steps/s=0.0
+  saved runs/sl_soft/ckpt_0004000.pt
+step=4050 | grad_norm=0.283 | steps/s=5.7
+step=4050 | total=2.218 | policy=1.466 | value=0.752 | lr=0.002 | steps/s=0.0
+step=4050 | entropy=1.490 | corr=0.423 | steps/s=0.0
+step=4050 | steps/s=0.0
+step=4050 | steps/s=0.0
+step=4100 | grad_norm=0.263 | steps/s=6.0
+step=4100 | total=2.203 | policy=1.460 | value=0.742 | lr=0.002 | steps/s=0.0
+step=4100 | entropy=1.489 | corr=0.428 | steps/s=0.0
+step=4100 | steps/s=0.0
+step=4100 | steps/s=0.0
+step=4150 | grad_norm=0.329 | steps/s=5.0
+step=4150 | total=2.098 | policy=1.373 | value=0.724 | lr=0.002 | steps/s=0.0
+step=4150 | entropy=1.396 | corr=0.453 | steps/s=0.0
+step=4150 | steps/s=0.0
+step=4150 | steps/s=0.0
+step=4200 | grad_norm=0.400 | steps/s=6.0
+step=4200 | total=2.147 | policy=1.415 | value=0.731 | lr=0.002 | steps/s=0.0
+step=4200 | entropy=1.409 | corr=0.453 | steps/s=0.0
+step=4200 | steps/s=0.0
+step=4200 | steps/s=0.0
+step=4250 | grad_norm=0.301 | steps/s=6.0
+step=4250 | total=2.143 | policy=1.409 | value=0.734 | lr=0.002 | steps/s=0.0
+step=4250 | entropy=1.414 | corr=0.447 | steps/s=0.0
+step=4250 | steps/s=0.0
+step=4250 | steps/s=0.0
+step=4300 | grad_norm=0.353 | steps/s=6.0
+step=4300 | total=2.140 | policy=1.410 | value=0.730 | lr=0.002 | steps/s=0.0
+step=4300 | entropy=1.413 | corr=0.450 | steps/s=0.0
+step=4300 | steps/s=0.0
+step=4300 | steps/s=0.0
+step=4350 | grad_norm=0.288 | steps/s=6.0
+step=4350 | total=2.114 | policy=1.399 | value=0.716 | lr=0.002 | steps/s=0.0
+step=4350 | entropy=1.423 | corr=0.457 | steps/s=0.0
+step=4350 | steps/s=0.0
+step=4350 | steps/s=0.0
+step=4400 | grad_norm=0.303 | steps/s=6.0
+step=4400 | total=2.134 | policy=1.429 | value=0.705 | lr=0.002 | steps/s=0.0
+step=4400 | entropy=1.449 | corr=0.471 | steps/s=0.0
+step=4400 | steps/s=0.0
+step=4400 | steps/s=0.0
+step=4450 | grad_norm=0.323 | steps/s=6.0
+step=4450 | total=2.177 | policy=1.433 | value=0.744 | lr=0.002 | steps/s=0.0
+step=4450 | entropy=1.446 | corr=0.430 | steps/s=0.0
+step=4450 | steps/s=0.0
+step=4450 | steps/s=0.0
+step=4500 | grad_norm=0.297 | steps/s=5.9
+step=4500 | total=2.169 | policy=1.435 | value=0.734 | lr=0.002 | steps/s=0.0
+step=4500 | entropy=1.444 | corr=0.444 | steps/s=0.0
+step=4500 | steps/s=0.0
+step=4500 | steps/s=0.0
+step=4550 | grad_norm=0.301 | steps/s=6.0
+step=4550 | total=2.181 | policy=1.464 | value=0.717 | lr=0.002 | steps/s=0.0
+step=4550 | entropy=1.443 | corr=0.469 | steps/s=0.0
+step=4550 | steps/s=0.0
+step=4550 | steps/s=0.0
+step=4600 | grad_norm=0.315 | steps/s=5.0
+step=4600 | total=2.021 | policy=1.329 | value=0.692 | lr=0.002 | steps/s=0.0
+step=4600 | entropy=1.360 | corr=0.500 | steps/s=0.0
+step=4600 | steps/s=0.0
+step=4600 | steps/s=0.0
+step=4650 | grad_norm=0.388 | steps/s=6.0
+step=4650 | total=2.037 | policy=1.336 | value=0.700 | lr=0.001 | steps/s=0.0
+step=4650 | entropy=1.355 | corr=0.481 | steps/s=0.0
+step=4650 | steps/s=0.0
+step=4650 | steps/s=0.0
+step=4700 | grad_norm=0.335 | steps/s=6.0
+step=4700 | total=2.015 | policy=1.324 | value=0.691 | lr=0.001 | steps/s=0.0
+step=4700 | entropy=1.352 | corr=0.491 | steps/s=0.0
+step=4700 | steps/s=0.0
+step=4700 | steps/s=0.0
+step=4750 | grad_norm=0.293 | steps/s=6.0
+step=4750 | total=2.082 | policy=1.396 | value=0.686 | lr=0.001 | steps/s=0.0
+step=4750 | entropy=1.408 | corr=0.500 | steps/s=0.0
+step=4750 | steps/s=0.0
+step=4750 | steps/s=0.0
+step=4800 | grad_norm=0.301 | steps/s=6.0
+step=4800 | total=2.052 | policy=1.373 | value=0.679 | lr=0.001 | steps/s=0.0
+step=4800 | entropy=1.383 | corr=0.499 | steps/s=0.0
+step=4800 | steps/s=0.0
+step=4800 | steps/s=0.0
+step=4850 | grad_norm=0.291 | steps/s=6.0
+step=4850 | total=2.108 | policy=1.419 | value=0.689 | lr=0.001 | steps/s=0.0
+step=4850 | entropy=1.398 | corr=0.495 | steps/s=0.0
+step=4850 | steps/s=0.0
+step=4850 | steps/s=0.0
+step=4900 | grad_norm=0.283 | steps/s=6.0
+step=4900 | total=2.082 | policy=1.396 | value=0.686 | lr=0.001 | steps/s=0.0
+step=4900 | entropy=1.389 | corr=0.500 | steps/s=0.0
+step=4900 | steps/s=0.0
+step=4900 | steps/s=0.0
+step=4950 | grad_norm=0.297 | steps/s=6.0
+step=4950 | total=2.070 | policy=1.385 | value=0.685 | lr=0.001 | steps/s=0.0
+step=4950 | entropy=1.405 | corr=0.504 | steps/s=0.0
+step=4950 | steps/s=0.0
+step=4950 | steps/s=0.0
+step=5000 | grad_norm=0.299 | steps/s=6.0
+step=5000 | total=2.127 | policy=1.441 | value=0.686 | lr=0.001 | steps/s=0.0
+step=5000 | entropy=1.411 | corr=0.505 | steps/s=0.0
+step=5000 | steps/s=0.0
+step=5000 | steps/s=0.0
+step=5050 | grad_norm=0.306 | steps/s=5.1
+step=5050 | total=1.957 | policy=1.314 | value=0.642 | lr=0.001 | steps/s=0.0
+step=5050 | entropy=1.327 | corr=0.541 | steps/s=0.0
+step=5050 | steps/s=0.0
+step=5050 | steps/s=0.0
+step=5100 | grad_norm=0.320 | steps/s=6.1
+step=5100 | total=1.982 | policy=1.319 | value=0.662 | lr=0.001 | steps/s=0.0
+step=5100 | entropy=1.310 | corr=0.522 | steps/s=0.0
+step=5100 | steps/s=0.0
+step=5100 | steps/s=0.0
+step=5150 | grad_norm=0.332 | steps/s=6.1
+step=5150 | total=1.992 | policy=1.351 | value=0.641 | lr=0.001 | steps/s=0.0
+step=5150 | entropy=1.335 | corr=0.541 | steps/s=0.0
+step=5150 | steps/s=0.0
+step=5150 | steps/s=0.0
+step=5200 | grad_norm=0.327 | steps/s=6.0
+step=5200 | total=2.011 | policy=1.350 | value=0.660 | lr=0.001 | steps/s=0.0
+step=5200 | entropy=1.359 | corr=0.531 | steps/s=0.0
+step=5200 | steps/s=0.0
+step=5200 | steps/s=0.0
+step=5250 | grad_norm=0.318 | steps/s=6.0
+step=5250 | total=2.029 | policy=1.369 | value=0.660 | lr=0.001 | steps/s=0.0
+step=5250 | entropy=1.371 | corr=0.525 | steps/s=0.0
+step=5250 | steps/s=0.0
+step=5250 | steps/s=0.0
+step=5300 | grad_norm=0.355 | steps/s=6.0
+step=5300 | total=2.027 | policy=1.356 | value=0.671 | lr=0.001 | steps/s=0.0
+step=5300 | entropy=1.363 | corr=0.517 | steps/s=0.0
+step=5300 | steps/s=0.0
+step=5300 | steps/s=0.0
+step=5350 | grad_norm=0.299 | steps/s=6.0
+step=5350 | total=1.980 | policy=1.327 | value=0.652 | lr=0.001 | steps/s=0.0
+step=5350 | entropy=1.344 | corr=0.533 | steps/s=0.0
+step=5350 | steps/s=0.0
+step=5350 | steps/s=0.0
+step=5400 | grad_norm=0.342 | steps/s=6.0
+step=5400 | total=2.044 | policy=1.363 | value=0.681 | lr=0.001 | steps/s=0.0
+step=5400 | entropy=1.359 | corr=0.503 | steps/s=0.0
+step=5400 | steps/s=0.0
+step=5400 | steps/s=0.0
+step=5450 | grad_norm=0.346 | steps/s=6.0
+step=5450 | total=2.026 | policy=1.363 | value=0.663 | lr=0.001 | steps/s=0.0
+step=5450 | entropy=1.364 | corr=0.524 | steps/s=0.0
+step=5450 | steps/s=0.0
+step=5450 | steps/s=0.0
+step=5500 | grad_norm=0.317 | steps/s=5.1
+step=5500 | total=1.855 | policy=1.237 | value=0.618 | lr=0.001 | steps/s=0.0
+step=5500 | entropy=1.293 | corr=0.569 | steps/s=0.0
+step=5500 | steps/s=0.0
+step=5500 | steps/s=0.0
+step=5550 | grad_norm=0.328 | steps/s=6.1
+step=5550 | total=1.880 | policy=1.277 | value=0.603 | lr=0.001 | steps/s=0.0
+step=5550 | entropy=1.282 | corr=0.586 | steps/s=0.0
+step=5550 | steps/s=0.0
+step=5550 | steps/s=0.0
+step=5600 | grad_norm=0.341 | steps/s=6.1
+step=5600 | total=1.910 | policy=1.294 | value=0.616 | lr=0.001 | steps/s=0.0
+step=5600 | entropy=1.300 | corr=0.573 | steps/s=0.0
+step=5600 | steps/s=0.0
+step=5600 | steps/s=0.0
+step=5650 | grad_norm=0.315 | steps/s=6.0
+step=5650 | total=1.942 | policy=1.320 | value=0.623 | lr=0.001 | steps/s=0.0
+step=5650 | entropy=1.317 | corr=0.562 | steps/s=0.0
+step=5650 | steps/s=0.0
+step=5650 | steps/s=0.0
+step=5700 | grad_norm=0.353 | steps/s=6.0
+step=5700 | total=1.976 | policy=1.344 | value=0.632 | lr=0.001 | steps/s=0.0
+step=5700 | entropy=1.323 | corr=0.556 | steps/s=0.0
+step=5700 | steps/s=0.0
+step=5700 | steps/s=0.0
+step=5750 | grad_norm=0.326 | steps/s=6.0
+step=5750 | total=1.908 | policy=1.296 | value=0.612 | lr=0.001 | steps/s=0.0
+step=5750 | entropy=1.291 | corr=0.574 | steps/s=0.0
+step=5750 | steps/s=0.0
+step=5750 | steps/s=0.0
+step=5800 | grad_norm=0.319 | steps/s=6.0
+step=5800 | total=1.939 | policy=1.304 | value=0.635 | lr=0.001 | steps/s=0.0
+step=5800 | entropy=1.305 | corr=0.552 | steps/s=0.0
+step=5800 | steps/s=0.0
+step=5800 | steps/s=0.0
+step=5850 | grad_norm=0.322 | steps/s=6.0
+step=5850 | total=1.925 | policy=1.318 | value=0.607 | lr=0.001 | steps/s=0.0
+step=5850 | entropy=1.305 | corr=0.583 | steps/s=0.0
+step=5850 | steps/s=0.0
+step=5850 | steps/s=0.0
+step=5900 | grad_norm=0.318 | steps/s=6.0
+step=5900 | total=1.925 | policy=1.310 | value=0.615 | lr=0.001 | steps/s=0.0
+step=5900 | entropy=1.317 | corr=0.573 | steps/s=0.0
+step=5900 | steps/s=0.0
+step=5900 | steps/s=0.0
+step=5950 | grad_norm=0.409 | steps/s=5.2
+step=5950 | total=1.743 | policy=1.185 | value=0.559 | lr=0.001 | steps/s=0.0
+step=5950 | entropy=1.242 | corr=0.620 | steps/s=0.0
+step=5950 | steps/s=0.0
+step=5950 | steps/s=0.0
+step=6000 | grad_norm=0.377 | steps/s=6.1
+step=6000 | total=1.809 | policy=1.238 | value=0.571 | lr=0.001 | steps/s=0.0
+step=6000 | entropy=1.240 | corr=0.613 | steps/s=0.0
+step=6000 | steps/s=0.0
+step=6000 | steps/s=0.0
+  saved runs/sl_soft/ckpt_0006000.pt
+step=6050 | grad_norm=0.359 | steps/s=5.9
+step=6050 | total=1.804 | policy=1.252 | value=0.552 | lr=0.001 | steps/s=0.0
+step=6050 | entropy=1.274 | corr=0.626 | steps/s=0.0
+step=6050 | steps/s=0.0
+step=6050 | steps/s=0.0
+step=6100 | grad_norm=0.336 | steps/s=6.1
+step=6100 | total=1.839 | policy=1.270 | value=0.568 | lr=0.001 | steps/s=0.0
+step=6100 | entropy=1.290 | corr=0.612 | steps/s=0.0
+step=6100 | steps/s=0.0
+step=6100 | steps/s=0.0
+step=6150 | grad_norm=0.332 | steps/s=6.1
+step=6150 | total=1.807 | policy=1.247 | value=0.560 | lr=0.001 | steps/s=0.0
+step=6150 | entropy=1.273 | corr=0.624 | steps/s=0.0
+step=6150 | steps/s=0.0
+step=6150 | steps/s=0.0
+step=6200 | grad_norm=0.369 | steps/s=6.1
+step=6200 | total=1.854 | policy=1.281 | value=0.573 | lr=0.001 | steps/s=0.0
+step=6200 | entropy=1.269 | corr=0.613 | steps/s=0.0
+step=6200 | steps/s=0.0
+step=6200 | steps/s=0.0
+step=6250 | grad_norm=0.355 | steps/s=6.0
+step=6250 | total=1.856 | policy=1.270 | value=0.587 | lr=0.001 | steps/s=0.0
+step=6250 | entropy=1.262 | corr=0.600 | steps/s=0.0
+step=6250 | steps/s=0.0
+step=6250 | steps/s=0.0
+step=6300 | grad_norm=0.357 | steps/s=6.0
+step=6300 | total=1.841 | policy=1.264 | value=0.577 | lr=0.001 | steps/s=0.0
+step=6300 | entropy=1.271 | corr=0.610 | steps/s=0.0
+step=6300 | steps/s=0.0
+step=6300 | steps/s=0.0
+step=6350 | grad_norm=0.330 | steps/s=6.0
+step=6350 | total=1.824 | policy=1.254 | value=0.570 | lr=0.001 | steps/s=0.0
+step=6350 | entropy=1.256 | corr=0.615 | steps/s=0.0
+step=6350 | steps/s=0.0
+step=6350 | steps/s=0.0
+step=6400 | grad_norm=0.335 | steps/s=5.1
+step=6400 | total=1.690 | policy=1.160 | value=0.530 | lr=0.001 | steps/s=0.0
+step=6400 | entropy=1.265 | corr=0.648 | steps/s=0.0
+step=6400 | steps/s=0.0
+step=6400 | steps/s=0.0
+step=6450 | grad_norm=0.364 | steps/s=6.1
+step=6450 | total=1.673 | policy=1.140 | value=0.533 | lr=0.001 | steps/s=0.0
+step=6450 | entropy=1.194 | corr=0.647 | steps/s=0.0
+step=6450 | steps/s=0.0
+step=6450 | steps/s=0.0
+step=6500 | grad_norm=0.367 | steps/s=6.1
+step=6500 | total=1.691 | policy=1.161 | value=0.530 | lr=0.001 | steps/s=0.0
+step=6500 | entropy=1.196 | corr=0.646 | steps/s=0.0
+step=6500 | steps/s=0.0
+step=6500 | steps/s=0.0
+step=6550 | grad_norm=0.377 | steps/s=6.1
+step=6550 | total=1.650 | policy=1.132 | value=0.517 | lr=0.001 | steps/s=0.0
+step=6550 | entropy=1.199 | corr=0.657 | steps/s=0.0
+step=6550 | steps/s=0.0
+step=6550 | steps/s=0.0
+step=6600 | grad_norm=0.387 | steps/s=6.0
+step=6600 | total=1.736 | policy=1.200 | value=0.536 | lr=0.001 | steps/s=0.0
+step=6600 | entropy=1.208 | corr=0.639 | steps/s=0.0
+step=6600 | steps/s=0.0
+step=6600 | steps/s=0.0
+step=6650 | grad_norm=0.352 | steps/s=6.0
+step=6650 | total=1.756 | policy=1.220 | value=0.537 | lr=0.001 | steps/s=0.0
+step=6650 | entropy=1.207 | corr=0.644 | steps/s=0.0
+step=6650 | steps/s=0.0
+step=6650 | steps/s=0.0
+step=6700 | grad_norm=0.351 | steps/s=6.0
+step=6700 | total=1.742 | policy=1.198 | value=0.544 | lr=0.001 | steps/s=0.0
+step=6700 | entropy=1.221 | corr=0.632 | steps/s=0.0
+step=6700 | steps/s=0.0
+step=6700 | steps/s=0.0
+step=6750 | grad_norm=0.376 | steps/s=6.0
+step=6750 | total=1.757 | policy=1.213 | value=0.544 | lr=0.001 | steps/s=0.0
+step=6750 | entropy=1.219 | corr=0.635 | steps/s=0.0
+step=6750 | steps/s=0.0
+step=6750 | steps/s=0.0
+step=6800 | grad_norm=0.359 | steps/s=6.0
+step=6800 | total=1.758 | policy=1.230 | value=0.529 | lr=0.001 | steps/s=0.0
+step=6800 | entropy=1.205 | corr=0.649 | steps/s=0.0
+step=6800 | steps/s=0.0
+step=6800 | steps/s=0.0
+step=6850 | grad_norm=0.354 | steps/s=5.9
+step=6850 | total=1.748 | policy=1.218 | value=0.531 | lr=0.001 | steps/s=0.0
+step=6850 | entropy=1.227 | corr=0.649 | steps/s=0.0
+step=6850 | steps/s=0.0
+step=6850 | steps/s=0.0
+step=6900 | grad_norm=0.407 | steps/s=5.2
+step=6900 | total=1.621 | policy=1.138 | value=0.483 | lr=0.001 | steps/s=0.0
+step=6900 | entropy=1.139 | corr=0.688 | steps/s=0.0
+step=6900 | steps/s=0.0
+step=6900 | steps/s=0.0
+step=6950 | grad_norm=0.412 | steps/s=6.0
+step=6950 | total=1.630 | policy=1.146 | value=0.485 | lr=0.001 | steps/s=0.0
+step=6950 | entropy=1.148 | corr=0.687 | steps/s=0.0
+step=6950 | steps/s=0.0
+step=6950 | steps/s=0.0
+step=7000 | grad_norm=0.376 | steps/s=6.0
+step=7000 | total=1.637 | policy=1.140 | value=0.496 | lr=0.001 | steps/s=0.0
+step=7000 | entropy=1.154 | corr=0.678 | steps/s=0.0
+step=7000 | steps/s=0.0
+step=7000 | steps/s=0.0
+step=7050 | grad_norm=0.386 | steps/s=6.1
+step=7050 | total=1.645 | policy=1.169 | value=0.476 | lr=0.001 | steps/s=0.0
+step=7050 | entropy=1.148 | corr=0.692 | steps/s=0.0
+step=7050 | steps/s=0.0
+step=7050 | steps/s=0.0
+step=7100 | grad_norm=0.379 | steps/s=6.0
+step=7100 | total=1.616 | policy=1.133 | value=0.484 | lr=0.001 | steps/s=0.0
+step=7100 | entropy=1.139 | corr=0.688 | steps/s=0.0
+step=7100 | steps/s=0.0
+step=7100 | steps/s=0.0
+step=7150 | grad_norm=0.390 | steps/s=6.0
+step=7150 | total=1.647 | policy=1.150 | value=0.497 | lr=0.001 | steps/s=0.0
+step=7150 | entropy=1.156 | corr=0.677 | steps/s=0.0
+step=7150 | steps/s=0.0
+step=7150 | steps/s=0.0
+step=7200 | grad_norm=0.389 | steps/s=6.0
+step=7200 | total=1.623 | policy=1.121 | value=0.502 | lr=0.000 | steps/s=0.0
+step=7200 | entropy=1.147 | corr=0.667 | steps/s=0.0
+step=7200 | steps/s=0.0
+step=7200 | steps/s=0.0
+step=7250 | grad_norm=0.391 | steps/s=6.0
+step=7250 | total=1.603 | policy=1.119 | value=0.484 | lr=0.000 | steps/s=0.0
+step=7250 | entropy=1.159 | corr=0.688 | steps/s=0.0
+step=7250 | steps/s=0.0
+step=7250 | steps/s=0.0
+step=7300 | grad_norm=0.416 | steps/s=6.0
+step=7300 | total=1.662 | policy=1.159 | value=0.503 | lr=0.000 | steps/s=0.0
+step=7300 | entropy=1.142 | corr=0.670 | steps/s=0.0
+step=7300 | steps/s=0.0
+step=7300 | steps/s=0.0
+step=7350 | grad_norm=0.405 | steps/s=5.1
+step=7350 | total=1.470 | policy=1.033 | value=0.437 | lr=0.000 | steps/s=0.0
+step=7350 | entropy=1.098 | corr=0.722 | steps/s=0.0
+step=7350 | steps/s=0.0
+step=7350 | steps/s=0.0
+step=7400 | grad_norm=0.425 | steps/s=6.1
+step=7400 | total=1.497 | policy=1.051 | value=0.446 | lr=0.000 | steps/s=0.0
+step=7400 | entropy=1.087 | corr=0.718 | steps/s=0.0
+step=7400 | steps/s=0.0
+step=7400 | steps/s=0.0
+step=7450 | grad_norm=0.432 | steps/s=6.1
+step=7450 | total=1.507 | policy=1.071 | value=0.436 | lr=0.000 | steps/s=0.0
+step=7450 | entropy=1.089 | corr=0.724 | steps/s=0.0
+step=7450 | steps/s=0.0
+step=7450 | steps/s=0.0
+step=7500 | grad_norm=0.418 | steps/s=6.1
+step=7500 | total=1.516 | policy=1.068 | value=0.448 | lr=0.000 | steps/s=0.0
+step=7500 | entropy=1.090 | corr=0.714 | steps/s=0.0
+step=7500 | steps/s=0.0
+step=7500 | steps/s=0.0
+step=7550 | grad_norm=0.414 | steps/s=6.1
+step=7550 | total=1.512 | policy=1.056 | value=0.456 | lr=0.000 | steps/s=0.0
+step=7550 | entropy=1.076 | corr=0.709 | steps/s=0.0
+step=7550 | steps/s=0.0
+step=7550 | steps/s=0.0
+step=7600 | grad_norm=0.409 | steps/s=6.0
+step=7600 | total=1.544 | policy=1.089 | value=0.455 | lr=0.000 | steps/s=0.0
+step=7600 | entropy=1.102 | corr=0.709 | steps/s=0.0
+step=7600 | steps/s=0.0
+step=7600 | steps/s=0.0
+step=7650 | grad_norm=0.421 | steps/s=6.0
+step=7650 | total=1.495 | policy=1.053 | value=0.442 | lr=0.000 | steps/s=0.0
+step=7650 | entropy=1.091 | corr=0.718 | steps/s=0.0
+step=7650 | steps/s=0.0
+step=7650 | steps/s=0.0
+step=7700 | grad_norm=0.399 | steps/s=6.0
+step=7700 | total=1.562 | policy=1.103 | value=0.459 | lr=0.000 | steps/s=0.0
+step=7700 | entropy=1.102 | corr=0.703 | steps/s=0.0
+step=7700 | steps/s=0.0
+step=7700 | steps/s=0.0
+step=7750 | grad_norm=0.399 | steps/s=6.0
+step=7750 | total=1.551 | policy=1.103 | value=0.448 | lr=0.000 | steps/s=0.0
+step=7750 | entropy=1.099 | corr=0.713 | steps/s=0.0
+step=7750 | steps/s=0.0
+step=7750 | steps/s=0.0
+step=7800 | grad_norm=0.413 | steps/s=5.2
+step=7800 | total=1.370 | policy=0.979 | value=0.391 | lr=0.000 | steps/s=0.0
+step=7800 | entropy=1.055 | corr=0.756 | steps/s=0.0
+step=7800 | steps/s=0.0
+step=7800 | steps/s=0.0
+step=7850 | grad_norm=0.447 | steps/s=6.1
+step=7850 | total=1.377 | policy=0.981 | value=0.396 | lr=0.000 | steps/s=0.0
+step=7850 | entropy=1.038 | corr=0.752 | steps/s=0.0
+step=7850 | steps/s=0.0
+step=7850 | steps/s=0.0
+step=7900 | grad_norm=0.468 | steps/s=6.1
+step=7900 | total=1.382 | policy=0.974 | value=0.408 | lr=0.000 | steps/s=0.0
+step=7900 | entropy=1.045 | corr=0.743 | steps/s=0.0
+step=7900 | steps/s=0.0
+step=7900 | steps/s=0.0
+step=7950 | grad_norm=0.436 | steps/s=6.1
+step=7950 | total=1.402 | policy=0.986 | value=0.416 | lr=0.000 | steps/s=0.0
+step=7950 | entropy=1.045 | corr=0.738 | steps/s=0.0
+step=7950 | steps/s=0.0
+step=7950 | steps/s=0.0
+step=8000 | grad_norm=0.437 | steps/s=6.1
+step=8000 | total=1.414 | policy=1.005 | value=0.408 | lr=0.000 | steps/s=0.0
+step=8000 | entropy=1.037 | corr=0.743 | steps/s=0.0
+step=8000 | steps/s=0.0
+step=8000 | steps/s=0.0
+  saved runs/sl_soft/ckpt_0008000.pt
+step=8050 | grad_norm=0.441 | steps/s=5.8
+step=8050 | total=1.433 | policy=1.010 | value=0.423 | lr=0.000 | steps/s=0.0
+step=8050 | entropy=1.037 | corr=0.736 | steps/s=0.0
+step=8050 | steps/s=0.0
+step=8050 | steps/s=0.0
+step=8100 | grad_norm=0.448 | steps/s=6.0
+step=8100 | total=1.451 | policy=1.026 | value=0.425 | lr=0.000 | steps/s=0.0
+step=8100 | entropy=1.044 | corr=0.729 | steps/s=0.0
+step=8100 | steps/s=0.0
+step=8100 | steps/s=0.0
+step=8150 | grad_norm=0.435 | steps/s=6.0
+step=8150 | total=1.429 | policy=1.021 | value=0.407 | lr=0.000 | steps/s=0.0
+step=8150 | entropy=1.026 | corr=0.745 | steps/s=0.0
+step=8150 | steps/s=0.0
+step=8150 | steps/s=0.0
+step=8200 | grad_norm=0.429 | steps/s=6.0
+step=8200 | total=1.394 | policy=0.998 | value=0.396 | lr=0.000 | steps/s=0.0
+step=8200 | entropy=1.020 | corr=0.751 | steps/s=0.0
+step=8200 | steps/s=0.0
+step=8200 | steps/s=0.0
+step=8250 | grad_norm=0.429 | steps/s=5.1
+step=8250 | total=1.270 | policy=0.900 | value=0.370 | lr=0.000 | steps/s=0.0
+step=8250 | entropy=0.981 | corr=0.770 | steps/s=0.0
+step=8250 | steps/s=0.0
+step=8250 | steps/s=0.0
+step=8300 | grad_norm=0.437 | steps/s=6.1
+step=8300 | total=1.302 | policy=0.927 | value=0.375 | lr=0.000 | steps/s=0.0
+step=8300 | entropy=0.985 | corr=0.767 | steps/s=0.0
+step=8300 | steps/s=0.0
+step=8300 | steps/s=0.0
+step=8350 | grad_norm=0.445 | steps/s=6.1
+step=8350 | total=1.284 | policy=0.922 | value=0.362 | lr=0.000 | steps/s=0.0
+step=8350 | entropy=1.006 | corr=0.778 | steps/s=0.0
+step=8350 | steps/s=0.0
+step=8350 | steps/s=0.0
+step=8400 | grad_norm=0.452 | steps/s=6.1
+step=8400 | total=1.306 | policy=0.923 | value=0.383 | lr=0.000 | steps/s=0.0
+step=8400 | entropy=0.981 | corr=0.762 | steps/s=0.0
+step=8400 | steps/s=0.0
+step=8400 | steps/s=0.0
+step=8450 | grad_norm=0.457 | steps/s=6.0
+step=8450 | total=1.304 | policy=0.933 | value=0.371 | lr=0.000 | steps/s=0.0
+step=8450 | entropy=0.990 | corr=0.768 | steps/s=0.0
+step=8450 | steps/s=0.0
+step=8450 | steps/s=0.0
+step=8500 | grad_norm=0.453 | steps/s=6.1
+step=8500 | total=1.346 | policy=0.966 | value=0.379 | lr=0.000 | steps/s=0.0
+step=8500 | entropy=0.983 | corr=0.763 | steps/s=0.0
+step=8500 | steps/s=0.0
+step=8500 | steps/s=0.0
+step=8550 | grad_norm=0.456 | steps/s=6.0
+step=8550 | total=1.357 | policy=0.985 | value=0.372 | lr=0.000 | steps/s=0.0
+step=8550 | entropy=0.999 | corr=0.772 | steps/s=0.0
+step=8550 | steps/s=0.0
+step=8550 | steps/s=0.0
+step=8600 | grad_norm=0.462 | steps/s=6.0
+step=8600 | total=1.320 | policy=0.936 | value=0.384 | lr=0.000 | steps/s=0.0
+step=8600 | entropy=0.980 | corr=0.761 | steps/s=0.0
+step=8600 | steps/s=0.0
+step=8600 | steps/s=0.0
+step=8650 | grad_norm=0.452 | steps/s=6.0
+step=8650 | total=1.305 | policy=0.929 | value=0.376 | lr=0.000 | steps/s=0.0
+step=8650 | entropy=0.979 | corr=0.765 | steps/s=0.0
+step=8650 | steps/s=0.0
+step=8650 | steps/s=0.0
+step=8700 | grad_norm=0.420 | steps/s=5.1
+step=8700 | total=1.182 | policy=0.847 | value=0.335 | lr=0.000 | steps/s=0.0
+step=8700 | entropy=0.956 | corr=0.797 | steps/s=0.0
+step=8700 | steps/s=0.0
+step=8700 | steps/s=0.0
+step=8750 | grad_norm=0.442 | steps/s=6.1
+step=8750 | total=1.220 | policy=0.877 | value=0.343 | lr=0.000 | steps/s=0.0
+step=8750 | entropy=0.962 | corr=0.790 | steps/s=0.0
+step=8750 | steps/s=0.0
+step=8750 | steps/s=0.0
+step=8800 | grad_norm=0.446 | steps/s=6.1
+step=8800 | total=1.198 | policy=0.870 | value=0.329 | lr=0.000 | steps/s=0.0
+step=8800 | entropy=0.958 | corr=0.799 | steps/s=0.0
+step=8800 | steps/s=0.0
+step=8800 | steps/s=0.0
+step=8850 | grad_norm=0.449 | steps/s=6.0
+step=8850 | total=1.249 | policy=0.901 | value=0.348 | lr=0.000 | steps/s=0.0
+step=8850 | entropy=0.974 | corr=0.786 | steps/s=0.0
+step=8850 | steps/s=0.0
+step=8850 | steps/s=0.0
+step=8900 | grad_norm=0.459 | steps/s=6.0
+step=8900 | total=1.202 | policy=0.873 | value=0.329 | lr=0.000 | steps/s=0.0
+step=8900 | entropy=0.966 | corr=0.800 | steps/s=0.0
+step=8900 | steps/s=0.0
+step=8900 | steps/s=0.0
+step=8950 | grad_norm=0.451 | steps/s=6.0
+step=8950 | total=1.257 | policy=0.896 | value=0.361 | lr=0.000 | steps/s=0.0
+step=8950 | entropy=0.951 | corr=0.778 | steps/s=0.0
+step=8950 | steps/s=0.0
+step=8950 | steps/s=0.0
+step=9000 | grad_norm=0.454 | steps/s=6.0
+step=9000 | total=1.214 | policy=0.877 | value=0.337 | lr=0.000 | steps/s=0.0
+step=9000 | entropy=0.936 | corr=0.794 | steps/s=0.0
+step=9000 | steps/s=0.0
+step=9000 | steps/s=0.0
+step=9050 | grad_norm=0.455 | steps/s=6.0
+step=9050 | total=1.223 | policy=0.868 | value=0.355 | lr=0.000 | steps/s=0.0
+step=9050 | entropy=0.947 | corr=0.782 | steps/s=0.0
+step=9050 | steps/s=0.0
+step=9050 | steps/s=0.0
+step=9100 | grad_norm=0.453 | steps/s=6.0
+step=9100 | total=1.226 | policy=0.886 | value=0.339 | lr=0.000 | steps/s=0.0
+step=9100 | entropy=0.961 | corr=0.791 | steps/s=0.0
+step=9100 | steps/s=0.0
+step=9100 | steps/s=0.0
+step=9150 | grad_norm=0.425 | steps/s=5.1
+step=9150 | total=1.148 | policy=0.810 | value=0.338 | lr=0.000 | steps/s=0.0
+step=9150 | entropy=0.932 | corr=0.792 | steps/s=0.0
+step=9150 | steps/s=0.0
+step=9150 | steps/s=0.0
+step=9200 | grad_norm=0.440 | steps/s=6.0
+step=9200 | total=1.155 | policy=0.832 | value=0.323 | lr=0.000 | steps/s=0.0
+step=9200 | entropy=0.931 | corr=0.803 | steps/s=0.0
+step=9200 | steps/s=0.0
+step=9200 | steps/s=0.0
+step=9250 | grad_norm=0.446 | steps/s=6.1
+step=9250 | total=1.161 | policy=0.833 | value=0.328 | lr=0.000 | steps/s=0.0
+step=9250 | entropy=0.938 | corr=0.801 | steps/s=0.0
+step=9250 | steps/s=0.0
+step=9250 | steps/s=0.0
+step=9300 | grad_norm=0.443 | steps/s=6.0
+step=9300 | total=1.136 | policy=0.829 | value=0.307 | lr=0.000 | steps/s=0.0
+step=9300 | entropy=0.928 | corr=0.816 | steps/s=0.0
+step=9300 | steps/s=0.0
+step=9300 | steps/s=0.0
+step=9350 | grad_norm=0.443 | steps/s=6.1
+step=9350 | total=1.165 | policy=0.837 | value=0.328 | lr=0.000 | steps/s=0.0
+step=9350 | entropy=0.940 | corr=0.801 | steps/s=0.0
+step=9350 | steps/s=0.0
+step=9350 | steps/s=0.0
+step=9400 | grad_norm=0.442 | steps/s=6.0
+step=9400 | total=1.156 | policy=0.830 | value=0.326 | lr=0.000 | steps/s=0.0
+step=9400 | entropy=0.933 | corr=0.803 | steps/s=0.0
+step=9400 | steps/s=0.0
+step=9400 | steps/s=0.0
+step=9450 | grad_norm=0.447 | steps/s=6.0
+step=9450 | total=1.170 | policy=0.854 | value=0.317 | lr=0.000 | steps/s=0.0
+step=9450 | entropy=0.929 | corr=0.810 | steps/s=0.0
+step=9450 | steps/s=0.0
+step=9450 | steps/s=0.0
+step=9500 | grad_norm=0.447 | steps/s=6.0
+step=9500 | total=1.190 | policy=0.859 | value=0.331 | lr=0.000 | steps/s=0.0
+step=9500 | entropy=0.937 | corr=0.798 | steps/s=0.0
+step=9500 | steps/s=0.0
+step=9500 | steps/s=0.0
+step=9550 | grad_norm=0.444 | steps/s=6.0
+step=9550 | total=1.119 | policy=0.811 | value=0.308 | lr=0.000 | steps/s=0.0
+step=9550 | entropy=0.926 | corr=0.813 | steps/s=0.0
+step=9550 | steps/s=0.0
+step=9550 | steps/s=0.0
+step=9600 | grad_norm=0.428 | steps/s=5.0
+step=9600 | total=1.112 | policy=0.807 | value=0.305 | lr=0.000 | steps/s=0.0
+step=9600 | entropy=0.918 | corr=0.816 | steps/s=0.0
+step=9600 | steps/s=0.0
+step=9600 | steps/s=0.0
+step=9650 | grad_norm=0.437 | steps/s=6.0
+step=9650 | total=1.136 | policy=0.819 | value=0.317 | lr=0.000 | steps/s=0.0
+step=9650 | entropy=0.922 | corr=0.809 | steps/s=0.0
+step=9650 | steps/s=0.0
+step=9650 | steps/s=0.0
+step=9700 | grad_norm=0.436 | steps/s=6.1
+step=9700 | total=1.129 | policy=0.802 | value=0.326 | lr=0.000 | steps/s=0.0
+step=9700 | entropy=0.925 | corr=0.802 | steps/s=0.0
+step=9700 | steps/s=0.0
+step=9700 | steps/s=0.0
+step=9750 | grad_norm=0.436 | steps/s=6.1
+step=9750 | total=1.106 | policy=0.779 | value=0.328 | lr=0.000 | steps/s=0.0
+step=9750 | entropy=0.921 | corr=0.801 | steps/s=0.0
+step=9750 | steps/s=0.0
+step=9750 | steps/s=0.0
+step=9800 | grad_norm=0.435 | steps/s=6.0
+step=9800 | total=1.151 | policy=0.827 | value=0.323 | lr=0.000 | steps/s=0.0
+step=9800 | entropy=0.931 | corr=0.803 | steps/s=0.0
+step=9800 | steps/s=0.0
+step=9800 | steps/s=0.0
+step=9850 | grad_norm=0.433 | steps/s=6.0
+step=9850 | total=1.133 | policy=0.809 | value=0.323 | lr=0.000 | steps/s=0.0
+step=9850 | entropy=0.924 | corr=0.804 | steps/s=0.0
+step=9850 | steps/s=0.0
+step=9850 | steps/s=0.0
+step=9900 | grad_norm=0.438 | steps/s=6.0
+step=9900 | total=1.120 | policy=0.819 | value=0.301 | lr=0.000 | steps/s=0.0
+step=9900 | entropy=0.921 | corr=0.819 | steps/s=0.0
+step=9900 | steps/s=0.0
+step=9900 | steps/s=0.0
+step=9950 | grad_norm=0.434 | steps/s=6.1
+step=9950 | total=1.149 | policy=0.835 | value=0.314 | lr=0.000 | steps/s=0.0
+step=9950 | entropy=0.937 | corr=0.810 | steps/s=0.0
+step=9950 | steps/s=0.0
+step=9950 | steps/s=0.0
+step=10000 | grad_norm=0.436 | steps/s=6.0
+step=10000 | total=1.119 | policy=0.799 | value=0.321 | lr=0.000 | steps/s=0.0
+step=10000 | entropy=0.918 | corr=0.804 | steps/s=0.0
+step=10000 | steps/s=0.0
+step=10000 | steps/s=0.0
+  saved runs/sl_soft/ckpt_0010000.pt
+saved final checkpoint: runs/sl_soft/final.pt

@@ -1,0 +1,12 @@
+[Event "AlphaCharles self-play"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "AlphaCharles"]
+[Black "AlphaCharles"]
+[Result "1/2-1/2"]
+[PlyCount "145"]
+[PriorEntropy "1.717"]
+[MctsEntropy "1.303"]
+
+1. d3 c6 2. e4 d5 3. Nf3 e6 4. g3 Nd7 5. Bd2 c5 6. Bg2 Ngf6 7. O-O dxe4 8. dxe4 Nxe4 9. Qe2 Nxd2 10. Nbxd2 Be7 11. c3 O-O 12. Rad1 Qc7 13. Nc4 a5 14. h4 Nf6 15. Nce5 Rd8 16. Rxd8+ Bxd8 17. Rd1 Bd7 18. Nxd7 Nxd7 19. Qb5 Nf6 20. Nd2 Qb6 21. Qxb6 Bxb6 22. Ne4 Kf8 23. c4 Nxe4 24. Bxe4 Rd8 25. Rxd8+ Bxd8 26. Bxb7 Bf6 27. b3 Bb2 28. Kg2 Ke7 29. Kf3 Kd6 30. Ke4 f5+ 31. Kd3 Ke5 32. Ke2 Ba3 33. f3 Kf6 34. Bc6 e5 35. Ke3 Bc1+ 36. Kf2 Bd2 37. Bd5 Bb4 38. Ke2 Ba3 39. Kd3 h6 40. Bg8 g5 41. h5 g4 42. fxg4 fxg4 43. Bd5 Bb4 44. Ke2 Bc3 45. Bg8 Bd4 46. Bh7 Ba1 47. Bg6 Bc3 48. Be8 e4 49. Bc6 Be5 50. Kf2 Bd4+ 51. Ke2 Kg5 52. Be8 Be5 53. Kf2 e3+ 54. Kxe3 Bxg3 55. Ke4 Bh4 56. Bg6 Bf2 57. Be8 Bg3 58. Bg6 Bd6 59. Ke3 g3 60. Kf3 Be5 61. Kg2 Kg4 62. Bf7 Bd4 63. Bg6 Kf4 64. Bh7 Be3 65. Bg6 Kg4 66. Bf7 Bf4 67. Bg6 Kg5 68. Kf3 Bd6 69. Kg2 Kg4 70. Bf7 Kh4 71. Bg6 Kg4 72. Bf7 Kg5 73. Bg6 1/2-1/2

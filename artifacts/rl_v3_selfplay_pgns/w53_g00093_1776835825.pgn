@@ -1,0 +1,12 @@
+[Event "AlphaCharles self-play"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "AlphaCharles"]
+[Black "AlphaCharles"]
+[Result "0-1"]
+[PlyCount "62"]
+[PriorEntropy "2.108"]
+[MctsEntropy "1.594"]
+
+1. c4 Nc6 2. g4 d5 3. Nf3 dxc4 4. Qc2 Bxg4 5. Qxc4 Bxf3 6. exf3 g6 7. h3 Bg7 8. Bg2 Bd4 9. h4 Na5 10. Qe2 Nf6 11. f4 Nc6 12. Nc3 Qd6 13. b3 O-O-O 14. Rb1 Qxf4 15. Nd1 Ne5 16. Ne3 c6 17. h5 gxh5 18. Rxh5 Nxh5 19. Qxh5 Rhg8 20. Qe2 Rxg2 21. Nxg2 Qf5 22. d3 Nxd3+ 23. Kf1 Nxf2 24. Bf4 Qxb1+ 25. Ne1 e5 26. Bxe5 Bxe5 27. Qxe5 Qe4 28. Qg7 Nd3 29. Nxd3 Qxd3+ 30. Kf2 Qd2+ 31. Kf1 Qxa2 0-1

@@ -1,0 +1,12 @@
+[Event "AlphaCharles self-play"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "AlphaCharles"]
+[Black "AlphaCharles"]
+[Result "1/2-1/2"]
+[PlyCount "360"]
+[PriorEntropy "1.549"]
+[MctsEntropy "1.189"]
+
+1. a3 d5 2. Nh3 Bf5 3. d3 c5 4. Bd2 Nf6 5. c3 Nc6 6. Nf4 c4 7. a4 e5 8. Nh3 Bc5 9. dxc4 dxc4 10. e3 Qd7 11. Na3 Bxa3 12. Rxa3 Bd3 13. Bxd3 Qxd3 14. Ra2 Rd8 15. Ng1 a5 16. Nf3 Ne4 17. b3 cxb3 18. Qxb3 Nc5 19. Qb5 O-O 20. Qxd3 Nxd3+ 21. Ke2 e4 22. Nd4 Nce5 23. f3 exf3+ 24. gxf3 Nc5 25. Rb1 Nc4 26. Bc1 Rfe8 27. e4 g6 28. Rb5 b6 29. Bg5 Rd7 30. Kf1 Kg7 31. h4 f6 32. Bf4 h6 33. h5 g5 34. Bg3 Kf7 35. Ke2 Red8 36. Nf5 Rd3 37. Nxh6+ Kg7 38. Nf5+ Kh7 39. Bc7 R8d7 40. Bxb6 Ne6 41. Bd4 Nf4+ 42. Kf2 g4 43. fxg4 Nh3+ 44. Kg2 Nf4+ 45. Kh1 Rh3+ 46. Kg1 Rd3 47. Kf1 Nd2+ 48. Ke1 Nxe4 49. h6 Rh3 50. Rf2 Nd3+ 51. Kf1 Nexf2 52. Bxf2 Nxf2 53. Kxf2 Rxc3 54. Rxa5 Rd2+ 55. Ke1 Rh2 56. Ra7+ Kg8 57. Kd1 Ra3 58. Ra8+ Kf7 59. Ra7+ Ke6 60. Nd4+ Kd5 61. Rd7+ Ke5 62. Nc2 Rxa4 63. h7 f5 64. g5 Rah4 65. Re7+ Kd6 66. Rf7 Rxh7 67. Rxf5 Rh1+ 68. Kd2 R7h2+ 69. Kd3 Rd1+ 70. Ke4 Rxc2 71. Rb5 Rf1 72. Rb6+ Ke7 73. Rb7+ Kf8 74. Kd4 Rd1+ 75. Ke3 Re1+ 76. Kf3 Rf1+ 77. Kg3 Rg1+ 78. Kf4 Rf2+ 79. Ke3 Rgf1 80. Rb8+ Kg7 81. Rb7+ Rf7 82. Rb8 Kg6 83. Rg8+ Kh5 84. g6 Re7+ 85. Kd3 Rd7+ 86. Ke4 Kh6 87. Rf8 Re1+ 88. Kf5 Kg7 89. Rc8 Rf1+ 90. Ke6 Rdd1 91. Rc7+ Kxg6 92. Rc8 Rde1+ 93. Kd7 Kf7 94. Rc6 Rd1+ 95. Kc7 Ke7 96. Rb6 Rc1+ 97. Kb7 Kd7 98. Rh6 Rb1+ 99. Ka7 Rfd1 100. Rh7+ Kc6 101. Rh6+ Kb5 102. Rh5+ Kc4 103. Rh4+ Rd4 104. Rh5 Rd7+ 105. Ka8 Rd5 106. Rh4+ Kc5 107. Rh8 Rd6 108. Ka7 Rd7+ 109. Ka8 Rb2 110. Rh5+ Kd4 111. Rh4+ Ke5 112. Rh5+ Kf6 113. Rh4 Rc7 114. Ra4 Ke5 115. Re4+ Kf5 116. Ra4 Rc8+ 117. Ka7 Ke6 118. Ra6+ Kd7 119. Rh6 Rc7+ 120. Ka8 Rc6 121. Rh7+ Kd6 122. Ka7 Rb4 123. Rh6+ Kc5 124. Rh5+ Kc4 125. Rh4+ Kb5 126. Rh5+ Rc5 127. Rh6 Ka5 128. Ra6+ Kb5 129. Rh6 Rb2 130. Rb6+ Kc4 131. Rxb2 Ra5+ 132. Kb6 Ra1 133. Kc6 Ra6+ 134. Kd7 Kd4 135. Rb7 Kc5 136. Rc7+ Kd5 137. Ke7 Ke5 138. Rc5+ Kd4 139. Rb5 Rh6 140. Ra5 Ke4 141. Ra4+ Kf5 142. Ra5+ Kg6 143. Ra6+ Kg7 144. Ra5 Rg6 145. Ra2 Rg3 146. Rh2 Kg6 147. Kf8 Rf3+ 148. Kg8 Kg5 149. Kh8 Rf8+ 150. Kg7 Rc8 151. Rg2+ Kf5 152. Rf2+ Kg4 153. Rb2 Rc1 154. Kf6 Rd1 155. Rb4+ Kg3 156. Kg5 Kf3 157. Rb3+ Ke4 158. Kg4 Rg1+ 159. Kh3 Kd4 160. Rb4+ Kc5 161. Rb8 Ra1 162. Rc8+ Kd6 163. Rd8+ Kc7 164. Re8 Kd7 165. Ra8 Rg1 166. Ra2 Rb1 167. Kg3 Kd8 168. Ra8+ Kd7 169. Kg2 Kc7 170. Ra2 Rb6 171. Rc2+ Kd7 172. Kg3 Rb3+ 173. Kf4 Rb1 174. Ke5 Kd8 175. Kd6 Rb6+ 176. Kc5 Ra6 177. Kb4 Rb6+ 178. Ka5 Rb1 179. Rc4 Kd7 180. Ra4 Kc6 1/2-1/2

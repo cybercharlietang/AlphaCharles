@@ -1,0 +1,355 @@
+[worker 23] ready on cuda:6
+[worker 23] game 1 0-1 plies=76 time=63.9s H_prior=1.799 H_mcts=1.284 drop=+0.515
+[worker 23] game 2 1-0 plies=111 time=90.4s H_prior=1.642 H_mcts=1.184 drop=+0.459
+[worker 23] game 3 0-1 plies=116 time=98.4s H_prior=1.614 H_mcts=1.128 drop=+0.485
+[worker 23] game 4 0-1 plies=134 time=107.3s H_prior=1.594 H_mcts=1.093 drop=+0.500
+[worker 23] game 5 0-1 plies=106 time=86.1s H_prior=1.688 H_mcts=1.167 drop=+0.521
+[worker 23] game 6 1-0 plies=51 time=40.1s H_prior=1.666 H_mcts=1.274 drop=+0.392
+[worker 23] game 7 0-1 plies=132 time=111.5s H_prior=1.618 H_mcts=1.117 drop=+0.501
+[worker 23] ready on cuda:6
+[worker 23] game 1 1-0 plies=89 time=74.3s H_prior=1.708 H_mcts=1.193 drop=+0.515
+[worker 23] game 2 1-0 plies=73 time=57.4s H_prior=1.802 H_mcts=1.306 drop=+0.496
+[worker 23] game 3 1-0 plies=121 time=102.3s H_prior=1.654 H_mcts=1.148 drop=+0.505
+[worker 23] game 4 1/2-1/2 plies=162 time=147.7s H_prior=1.606 H_mcts=1.043 drop=+0.562
+[worker 23] game 5 1-0 plies=117 time=96.7s H_prior=1.631 H_mcts=1.093 drop=+0.538
+[worker 23] game 6 1-0 plies=171 time=160.4s H_prior=1.790 H_mcts=1.178 drop=+0.613
+[worker 23] game 7 0-1 plies=112 time=90.1s H_prior=1.528 H_mcts=1.214 drop=+0.314
+[worker 23] game 8 0-1 plies=80 time=66.5s H_prior=1.802 H_mcts=1.469 drop=+0.333
+[worker 23] game 9 1-0 plies=121 time=104.1s H_prior=1.630 H_mcts=1.044 drop=+0.586
+[worker 23] game 10 1-0 plies=77 time=59.2s H_prior=1.680 H_mcts=1.342 drop=+0.339
+[worker 23] game 11 0-1 plies=92 time=75.4s H_prior=1.628 H_mcts=1.205 drop=+0.423
+[worker 23] game 12 1-0 plies=101 time=82.8s H_prior=1.604 H_mcts=1.254 drop=+0.350
+[worker 23] game 13 1/2-1/2 plies=230 time=250.3s H_prior=1.730 H_mcts=1.317 drop=+0.413
+[worker 23] refreshed weights (mtime 1776823698)
+[worker 23] game 14 1/2-1/2 plies=122 time=100.5s H_prior=1.692 H_mcts=1.126 drop=+0.567
+[worker 23] game 15 1-0 plies=31 time=24.2s H_prior=2.028 H_mcts=1.667 drop=+0.361
+[worker 23] game 16 1-0 plies=33 time=24.5s H_prior=2.158 H_mcts=1.974 drop=+0.185
+[worker 23] ready on cuda:3
+[worker 23] game 1 1-0 plies=91 time=81.0s H_prior=1.695 H_mcts=1.139 drop=+0.556
+[worker 23] game 2 1-0 plies=115 time=94.9s H_prior=1.683 H_mcts=1.268 drop=+0.415
+[worker 23] game 3 1-0 plies=147 time=133.6s H_prior=1.703 H_mcts=1.176 drop=+0.527
+[worker 23] game 4 0-1 plies=114 time=96.1s H_prior=1.588 H_mcts=1.057 drop=+0.531
+[worker 23] ready on cuda:2
+[worker 23] game 1 0-1 plies=36 time=48.4s H_prior=1.884 H_mcts=1.524 drop=+0.360
+[worker 23] refreshed weights (mtime 1776824393)
+[worker 23] game 2 0-1 plies=78 time=82.1s H_prior=1.791 H_mcts=1.552 drop=+0.240
+[worker 23] game 3 0-1 plies=80 time=81.9s H_prior=1.673 H_mcts=1.179 drop=+0.494
+[worker 23] game 4 0-1 plies=144 time=165.6s H_prior=1.590 H_mcts=1.055 drop=+0.535
+[worker 23] game 5 1-0 plies=131 time=139.3s H_prior=1.629 H_mcts=1.208 drop=+0.421
+[worker 23] refreshed weights (mtime 1776824873)
+[worker 23] game 6 0-1 plies=30 time=31.2s H_prior=2.183 H_mcts=1.587 drop=+0.597
+[worker 23] game 7 1-0 plies=137 time=152.8s H_prior=1.570 H_mcts=1.118 drop=+0.452
+[worker 23] game 8 0-1 plies=42 time=43.7s H_prior=1.963 H_mcts=1.609 drop=+0.354
+[worker 23] refreshed weights (mtime 1776825111)
+[worker 23] game 9 1/2-1/2 plies=76 time=81.2s H_prior=1.807 H_mcts=1.321 drop=+0.486
+[worker 23] game 10 1-0 plies=39 time=39.6s H_prior=2.146 H_mcts=1.700 drop=+0.446
+[worker 23] game 11 0-1 plies=142 time=169.4s H_prior=1.739 H_mcts=1.334 drop=+0.405
+[worker 23] refreshed weights (mtime 1776825388)
+[worker 23] game 12 0-1 plies=124 time=144.7s H_prior=1.804 H_mcts=1.338 drop=+0.466
+[worker 23] game 13 1-0 plies=169 time=209.7s H_prior=1.623 H_mcts=1.151 drop=+0.472
+[worker 23] refreshed weights (mtime 1776825686)
+[worker 23] game 14 0-1 plies=122 time=142.2s H_prior=1.950 H_mcts=1.328 drop=+0.622
+[worker 23] game 15 1-0 plies=165 time=203.0s H_prior=1.748 H_mcts=1.251 drop=+0.497
+[worker 23] refreshed weights (mtime 1776825951)
+[worker 23] game 16 1/2-1/2 plies=128 time=141.8s H_prior=1.759 H_mcts=1.191 drop=+0.568
+[worker 23] game 17 0-1 plies=64 time=63.6s H_prior=2.142 H_mcts=1.430 drop=+0.712
+[worker 23] refreshed weights (mtime 1776826272)
+[worker 23] game 18 1/2-1/2 plies=259 time=344.9s H_prior=1.462 H_mcts=1.158 drop=+0.303
+[worker 23] refreshed weights (mtime 1776826579)
+[worker 23] game 19 1/2-1/2 plies=123 time=126.3s H_prior=1.795 H_mcts=1.057 drop=+0.738
+[worker 23] game 20 0-1 plies=90 time=98.6s H_prior=2.061 H_mcts=1.504 drop=+0.557
+[worker 23] refreshed weights (mtime 1776826891)
+[worker 23] game 21 0-1 plies=154 time=177.6s H_prior=1.684 H_mcts=1.194 drop=+0.490
+[worker 23] game 22 1-0 plies=23 time=21.1s H_prior=2.599 H_mcts=1.877 drop=+0.722
+[worker 23] game 23 1-0 plies=21 time=20.1s H_prior=2.132 H_mcts=1.560 drop=+0.573
+[worker 23] game 24 1/2-1/2 plies=111 time=105.8s H_prior=1.702 H_mcts=1.129 drop=+0.573
+[worker 23] refreshed weights (mtime 1776827182)
+[worker 23] game 25 0-1 plies=158 time=181.9s H_prior=1.531 H_mcts=1.015 drop=+0.516
+[worker 23] game 26 1/2-1/2 plies=201 time=258.6s H_prior=1.795 H_mcts=1.300 drop=+0.495
+[worker 23] refreshed weights (mtime 1776827495)
+[worker 23] game 27 1-0 plies=75 time=77.0s H_prior=1.890 H_mcts=1.396 drop=+0.494
+[worker 23] game 28 1-0 plies=73 time=71.9s H_prior=1.948 H_mcts=1.548 drop=+0.400
+[worker 23] refreshed weights (mtime 1776827791)
+[worker 23] game 29 1-0 plies=47 time=49.5s H_prior=2.173 H_mcts=1.520 drop=+0.653
+[worker 23] game 30 1-0 plies=139 time=160.5s H_prior=1.757 H_mcts=1.192 drop=+0.565
+[worker 23] game 31 1-0 plies=83 time=89.8s H_prior=2.014 H_mcts=1.331 drop=+0.683
+[worker 23] refreshed weights (mtime 1776828100)
+[worker 23] game 32 1/2-1/2 plies=110 time=99.0s H_prior=1.594 H_mcts=0.912 drop=+0.682
+[worker 23] game 33 1-0 plies=65 time=69.0s H_prior=1.993 H_mcts=1.570 drop=+0.422
+[worker 23] game 34 0-1 plies=120 time=134.7s H_prior=1.805 H_mcts=1.146 drop=+0.659
+[worker 23] refreshed weights (mtime 1776828383)
+[worker 23] game 35 0-1 plies=86 time=93.8s H_prior=1.940 H_mcts=1.389 drop=+0.551
+[worker 23] game 36 1-0 plies=87 time=97.1s H_prior=2.050 H_mcts=1.389 drop=+0.661
+[worker 23] game 37 0-1 plies=260 time=364.5s H_prior=1.724 H_mcts=1.256 drop=+0.467
+[worker 23] refreshed weights (mtime 1776828677)
+[worker 23] game 38 1-0 plies=21 time=20.6s H_prior=2.351 H_mcts=1.779 drop=+0.573
+[worker 23] refreshed weights (mtime 1776828978)
+[worker 23] game 39 1-0 plies=75 time=76.9s H_prior=2.018 H_mcts=1.202 drop=+0.816
+[worker 23] game 40 1-0 plies=151 time=177.0s H_prior=1.576 H_mcts=1.060 drop=+0.516
+[worker 23] game 41 1/2-1/2 plies=255 time=378.4s H_prior=1.572 H_mcts=1.194 drop=+0.378
+[worker 23] refreshed weights (mtime 1776829577)
+[worker 23] game 42 1-0 plies=107 time=118.5s H_prior=1.817 H_mcts=1.352 drop=+0.465
+[worker 23] game 43 0-1 plies=108 time=111.7s H_prior=1.650 H_mcts=1.169 drop=+0.481
+[worker 23] game 44 1/2-1/2 plies=132 time=148.9s H_prior=1.793 H_mcts=1.175 drop=+0.619
+[worker 23] refreshed weights (mtime 1776829880)
+[worker 23] game 45 0-1 plies=58 time=64.4s H_prior=2.130 H_mcts=1.420 drop=+0.709
+[worker 23] game 46 0-1 plies=100 time=117.4s H_prior=2.024 H_mcts=1.410 drop=+0.614
+[worker 23] game 47 1/2-1/2 plies=121 time=133.2s H_prior=1.906 H_mcts=1.200 drop=+0.706
+[worker 23] refreshed weights (mtime 1776830182)
+[worker 23] game 48 1-0 plies=113 time=131.8s H_prior=2.039 H_mcts=1.417 drop=+0.622
+[worker 23] game 49 1/2-1/2 plies=74 time=75.4s H_prior=1.945 H_mcts=1.152 drop=+0.793
+[worker 23] refreshed weights (mtime 1776830478)
+[worker 23] game 50 1-0 plies=93 time=97.7s H_prior=1.816 H_mcts=1.292 drop=+0.525
+[worker 23] game 51 1/2-1/2 plies=97 time=103.2s H_prior=1.815 H_mcts=1.102 drop=+0.713
+[worker 23] game 52 1-0 plies=109 time=117.6s H_prior=1.565 H_mcts=1.126 drop=+0.439
+[worker 23] refreshed weights (mtime 1776830777)
+[worker 23] game 53 0-1 plies=32 time=32.6s H_prior=2.250 H_mcts=1.650 drop=+0.600
+[worker 23] game 54 1-0 plies=59 time=65.0s H_prior=2.244 H_mcts=1.675 drop=+0.570
+[worker 23] game 55 0-1 plies=74 time=74.7s H_prior=1.857 H_mcts=1.098 drop=+0.758
+[worker 23] game 56 1-0 plies=107 time=117.9s H_prior=1.995 H_mcts=1.419 drop=+0.576
+[worker 23] refreshed weights (mtime 1776831081)
+[worker 23] game 57 0-1 plies=130 time=142.0s H_prior=1.609 H_mcts=1.008 drop=+0.601
+[worker 23] game 58 1/2-1/2 plies=130 time=148.0s H_prior=1.953 H_mcts=1.237 drop=+0.716
+[worker 23] refreshed weights (mtime 1776831360)
+[worker 23] game 59 1-0 plies=59 time=62.9s H_prior=2.250 H_mcts=1.741 drop=+0.509
+[worker 23] game 60 0-1 plies=64 time=69.1s H_prior=2.222 H_mcts=1.511 drop=+0.711
+[worker 23] game 61 1-0 plies=67 time=69.5s H_prior=2.064 H_mcts=1.467 drop=+0.597
+[worker 23] game 62 1-0 plies=137 time=158.6s H_prior=1.719 H_mcts=1.196 drop=+0.522
+[worker 23] refreshed weights (mtime 1776831654)
+[worker 23] game 63 0-1 plies=54 time=51.7s H_prior=2.132 H_mcts=1.514 drop=+0.619
+[worker 23] game 64 0-1 plies=58 time=60.8s H_prior=2.033 H_mcts=1.337 drop=+0.695
+[worker 23] game 65 1/2-1/2 plies=199 time=250.6s H_prior=1.606 H_mcts=1.116 drop=+0.490
+[worker 23] refreshed weights (mtime 1776831944)
+[worker 23] game 66 1/2-1/2 plies=213 time=283.0s H_prior=1.595 H_mcts=1.090 drop=+0.505
+[worker 23] refreshed weights (mtime 1776832251)
+[worker 23] game 67 1/2-1/2 plies=250 time=364.0s H_prior=1.623 H_mcts=1.271 drop=+0.352
+[worker 23] refreshed weights (mtime 1776832553)
+[worker 23] game 68 0-1 plies=146 time=162.9s H_prior=1.663 H_mcts=1.164 drop=+0.499
+[worker 23] refreshed weights (mtime 1776832849)
+[worker 23] game 69 1-0 plies=77 time=81.6s H_prior=1.812 H_mcts=1.211 drop=+0.601
+[worker 23] game 70 1-0 plies=211 time=275.0s H_prior=1.642 H_mcts=1.204 drop=+0.438
+[worker 23] refreshed weights (mtime 1776833128)
+[worker 23] game 71 1/2-1/2 plies=174 time=211.7s H_prior=1.668 H_mcts=1.217 drop=+0.452
+[worker 23] refreshed weights (mtime 1776833454)
+[worker 23] game 72 1-0 plies=91 time=95.0s H_prior=1.823 H_mcts=1.334 drop=+0.489
+[worker 23] game 73 1-0 plies=151 time=182.6s H_prior=1.717 H_mcts=1.163 drop=+0.554
+[worker 23] refreshed weights (mtime 1776833746)
+[worker 23] game 74 1-0 plies=77 time=80.6s H_prior=2.174 H_mcts=1.534 drop=+0.640
+[worker 23] game 75 0-1 plies=64 time=66.2s H_prior=2.031 H_mcts=1.367 drop=+0.664
+[worker 23] game 76 1/2-1/2 plies=124 time=129.4s H_prior=1.851 H_mcts=1.206 drop=+0.645
+[worker 23] refreshed weights (mtime 1776834067)
+[worker 23] game 77 0-1 plies=92 time=97.3s H_prior=1.915 H_mcts=1.319 drop=+0.596
+[worker 23] game 78 1-0 plies=55 time=55.8s H_prior=2.021 H_mcts=1.496 drop=+0.525
+[worker 23] game 79 0-1 plies=92 time=100.4s H_prior=1.921 H_mcts=1.280 drop=+0.642
+[worker 23] game 80 0-1 plies=94 time=108.3s H_prior=1.857 H_mcts=1.334 drop=+0.523
+[worker 23] refreshed weights (mtime 1776834351)
+[worker 23] game 81 1/2-1/2 plies=177 time=208.6s H_prior=1.823 H_mcts=1.166 drop=+0.658
+[worker 23] refreshed weights (mtime 1776834637)
+[worker 23] game 82 1-0 plies=97 time=108.9s H_prior=1.921 H_mcts=1.403 drop=+0.518
+[worker 23] game 83 1-0 plies=33 time=33.9s H_prior=2.163 H_mcts=1.352 drop=+0.811
+[worker 23] game 84 1/2-1/2 plies=151 time=159.7s H_prior=1.682 H_mcts=1.126 drop=+0.555
+[worker 23] refreshed weights (mtime 1776834940)
+[worker 23] game 85 1/2-1/2 plies=159 time=181.8s H_prior=1.686 H_mcts=1.274 drop=+0.412
+[worker 23] game 86 1-0 plies=117 time=133.4s H_prior=1.757 H_mcts=1.322 drop=+0.435
+[worker 23] refreshed weights (mtime 1776835232)
+[worker 23] game 87 0-1 plies=100 time=106.4s H_prior=1.858 H_mcts=1.316 drop=+0.541
+[worker 23] game 88 0-1 plies=108 time=123.9s H_prior=1.876 H_mcts=1.345 drop=+0.531
+[worker 23] game 89 1/2-1/2 plies=220 time=299.3s H_prior=1.657 H_mcts=1.128 drop=+0.529
+[worker 23] refreshed weights (mtime 1776835553)
+[worker 23] game 90 0-1 plies=210 time=279.1s H_prior=1.654 H_mcts=1.123 drop=+0.531
+[worker 23] refreshed weights (mtime 1776835857)
+[worker 23] game 91 1/2-1/2 plies=214 time=286.4s H_prior=1.651 H_mcts=1.215 drop=+0.436
+[worker 23] refreshed weights (mtime 1776836173)
+[worker 23] game 92 1-0 plies=163 time=197.0s H_prior=1.825 H_mcts=1.279 drop=+0.546
+[worker 23] refreshed weights (mtime 1776836471)
+[worker 23] game 93 1-0 plies=149 time=164.4s H_prior=1.462 H_mcts=0.989 drop=+0.472
+[worker 23] game 94 1/2-1/2 plies=132 time=154.3s H_prior=1.892 H_mcts=1.226 drop=+0.666
+[worker 23] refreshed weights (mtime 1776836776)
+[worker 23] game 95 0-1 plies=38 time=39.5s H_prior=2.039 H_mcts=1.701 drop=+0.338
+[worker 23] game 96 1/2-1/2 plies=170 time=193.2s H_prior=1.546 H_mcts=1.035 drop=+0.511
+[worker 23] refreshed weights (mtime 1776837084)
+[worker 23] game 97 1-0 plies=137 time=164.2s H_prior=1.822 H_mcts=1.136 drop=+0.686
+[worker 23] game 98 1/2-1/2 plies=92 time=95.1s H_prior=1.888 H_mcts=1.310 drop=+0.579
+[worker 23] game 99 1/2-1/2 plies=245 time=360.1s H_prior=1.584 H_mcts=1.231 drop=+0.353
+[worker 23] refreshed weights (mtime 1776837697)
+[worker 23] game 100 1/2-1/2 plies=84 time=91.2s H_prior=2.132 H_mcts=1.365 drop=+0.767
+[worker 23] game 101 1/2-1/2 plies=109 time=121.6s H_prior=1.941 H_mcts=1.184 drop=+0.758
+[worker 23] game 102 1/2-1/2 plies=52 time=53.4s H_prior=2.310 H_mcts=1.794 drop=+0.515
+[worker 23] refreshed weights (mtime 1776837984)
+[worker 23] game 103 1-0 plies=75 time=81.3s H_prior=1.954 H_mcts=1.263 drop=+0.691
+[worker 23] game 104 0-1 plies=176 time=213.3s H_prior=1.786 H_mcts=1.316 drop=+0.470
+[worker 23] refreshed weights (mtime 1776838278)
+[worker 23] game 105 0-1 plies=66 time=72.3s H_prior=2.185 H_mcts=1.487 drop=+0.698
+[worker 23] game 106 0-1 plies=100 time=108.3s H_prior=1.787 H_mcts=1.179 drop=+0.608
+[worker 23] game 107 1/2-1/2 plies=145 time=164.6s H_prior=1.825 H_mcts=1.296 drop=+0.528
+[worker 23] refreshed weights (mtime 1776838582)
+[worker 23] game 108 0-1 plies=160 time=183.9s H_prior=1.588 H_mcts=1.062 drop=+0.526
+[worker 23] game 109 0-1 plies=128 time=142.4s H_prior=1.713 H_mcts=1.261 drop=+0.452
+[worker 23] refreshed weights (mtime 1776838864)
+[worker 23] game 110 0-1 plies=32 time=32.5s H_prior=2.087 H_mcts=1.674 drop=+0.414
+[worker 23] game 111 0-1 plies=64 time=67.1s H_prior=1.991 H_mcts=1.407 drop=+0.584
+[worker 23] game 112 1/2-1/2 plies=62 time=64.2s H_prior=2.000 H_mcts=1.274 drop=+0.726
+[worker 23] game 113 0-1 plies=120 time=135.9s H_prior=1.786 H_mcts=1.212 drop=+0.574
+[worker 23] refreshed weights (mtime 1776839143)
+[worker 23] game 114 1/2-1/2 plies=179 time=219.0s H_prior=1.737 H_mcts=1.161 drop=+0.576
+[worker 23] refreshed weights (mtime 1776839443)
+[worker 23] game 115 0-1 plies=70 time=69.9s H_prior=1.951 H_mcts=1.376 drop=+0.575
+[worker 23] game 116 1/2-1/2 plies=155 time=169.1s H_prior=1.699 H_mcts=1.039 drop=+0.660
+[worker 23] game 117 1-0 plies=23 time=22.2s H_prior=2.358 H_mcts=1.845 drop=+0.513
+[worker 23] game 118 1/2-1/2 plies=73 time=75.9s H_prior=2.062 H_mcts=1.370 drop=+0.692
+[worker 23] refreshed weights (mtime 1776839762)
+[worker 23] game 119 1-0 plies=77 time=77.4s H_prior=2.116 H_mcts=1.326 drop=+0.790
+[worker 23] game 120 1-0 plies=93 time=101.4s H_prior=1.995 H_mcts=1.452 drop=+0.543
+[worker 23] game 121 1/2-1/2 plies=159 time=180.2s H_prior=1.754 H_mcts=1.217 drop=+0.537
+[worker 23] refreshed weights (mtime 1776840064)
+[worker 23] game 122 1-0 plies=29 time=29.0s H_prior=2.288 H_mcts=1.820 drop=+0.468
+[worker 23] game 123 1-0 plies=125 time=130.1s H_prior=1.950 H_mcts=1.327 drop=+0.623
+[worker 23] game 124 0-1 plies=80 time=88.2s H_prior=2.044 H_mcts=1.512 drop=+0.531
+[worker 23] refreshed weights (mtime 1776840370)
+[worker 23] game 125 0-1 plies=158 time=191.8s H_prior=1.600 H_mcts=1.076 drop=+0.525
+[worker 23] game 126 0-1 plies=56 time=59.5s H_prior=2.078 H_mcts=1.500 drop=+0.578
+[worker 23] refreshed weights (mtime 1776840666)
+[worker 23] game 127 0-1 plies=176 time=217.4s H_prior=1.669 H_mcts=1.204 drop=+0.465
+[worker 23] game 128 0-1 plies=46 time=48.5s H_prior=2.265 H_mcts=1.750 drop=+0.515
+[worker 23] refreshed weights (mtime 1776840943)
+[worker 23] game 129 1/2-1/2 plies=169 time=206.4s H_prior=1.633 H_mcts=1.231 drop=+0.402
+[worker 23] game 130 1/2-1/2 plies=161 time=172.0s H_prior=1.609 H_mcts=1.097 drop=+0.512
+[worker 23] refreshed weights (mtime 1776841239)
+[worker 23] game 131 0-1 plies=40 time=43.2s H_prior=2.167 H_mcts=1.511 drop=+0.656
+[worker 23] game 132 1-0 plies=203 time=262.8s H_prior=1.578 H_mcts=1.097 drop=+0.481
+[worker 23] refreshed weights (mtime 1776841526)
+[worker 23] game 133 1-0 plies=33 time=32.9s H_prior=2.124 H_mcts=1.648 drop=+0.476
+[worker 23] game 134 1-0 plies=147 time=164.2s H_prior=1.639 H_mcts=1.050 drop=+0.589
+[worker 23] refreshed weights (mtime 1776841810)
+[worker 23] game 135 1/2-1/2 plies=63 time=63.3s H_prior=2.010 H_mcts=1.426 drop=+0.584
+[worker 23] game 136 1-0 plies=65 time=70.9s H_prior=1.969 H_mcts=1.279 drop=+0.690
+[worker 23] game 137 1-0 plies=93 time=107.1s H_prior=2.042 H_mcts=1.382 drop=+0.659
+[worker 23] game 138 1/2-1/2 plies=121 time=140.9s H_prior=2.003 H_mcts=1.278 drop=+0.725
+[worker 23] refreshed weights (mtime 1776842098)
+[worker 23] game 139 0-1 plies=28 time=26.2s H_prior=2.221 H_mcts=1.699 drop=+0.522
+[worker 23] game 140 1-0 plies=29 time=30.4s H_prior=2.479 H_mcts=1.746 drop=+0.733
+[worker 23] game 141 1/2-1/2 plies=91 time=95.6s H_prior=1.894 H_mcts=1.281 drop=+0.613
+[worker 23] game 142 0-1 plies=78 time=87.0s H_prior=2.170 H_mcts=1.465 drop=+0.705
+[worker 23] refreshed weights (mtime 1776842408)
+[worker 23] game 143 0-1 plies=94 time=101.8s H_prior=1.782 H_mcts=1.329 drop=+0.453
+[worker 23] game 144 1-0 plies=43 time=44.5s H_prior=2.192 H_mcts=1.576 drop=+0.616
+[worker 23] game 145 1-0 plies=109 time=123.4s H_prior=1.878 H_mcts=1.367 drop=+0.510
+[worker 23] refreshed weights (mtime 1776842705)
+[worker 23] game 146 1/2-1/2 plies=144 time=161.7s H_prior=1.772 H_mcts=1.153 drop=+0.618
+[worker 23] game 147 1/2-1/2 plies=130 time=148.7s H_prior=1.834 H_mcts=1.062 drop=+0.771
+[worker 23] refreshed weights (mtime 1776843013)
+[worker 23] game 148 1/2-1/2 plies=122 time=130.6s H_prior=1.811 H_mcts=1.293 drop=+0.519
+[worker 23] game 149 1/2-1/2 plies=129 time=147.8s H_prior=1.779 H_mcts=1.158 drop=+0.621
+[worker 23] game 150 0-1 plies=100 time=112.2s H_prior=1.828 H_mcts=1.287 drop=+0.540
+[worker 23] refreshed weights (mtime 1776843327)
+[worker 23] game 151 1/2-1/2 plies=99 time=109.9s H_prior=1.871 H_mcts=1.270 drop=+0.601
+[worker 23] game 152 1-0 plies=57 time=63.5s H_prior=2.091 H_mcts=1.441 drop=+0.649
+[worker 23] game 153 0-1 plies=38 time=38.3s H_prior=2.094 H_mcts=1.537 drop=+0.558
+[worker 23] game 154 1/2-1/2 plies=177 time=212.8s H_prior=1.698 H_mcts=1.144 drop=+0.553
+[worker 23] refreshed weights (mtime 1776843636)
+[worker 23] game 155 1-0 plies=149 time=177.1s H_prior=1.770 H_mcts=1.314 drop=+0.456
+[worker 23] refreshed weights (mtime 1776843938)
+[worker 23] game 156 0-1 plies=76 time=82.6s H_prior=1.813 H_mcts=1.245 drop=+0.568
+[worker 23] game 157 0-1 plies=60 time=68.3s H_prior=2.303 H_mcts=1.631 drop=+0.672
+[worker 23] game 158 0-1 plies=156 time=190.6s H_prior=1.713 H_mcts=1.258 drop=+0.455
+[worker 23] refreshed weights (mtime 1776844250)
+[worker 23] game 159 1/2-1/2 plies=123 time=137.4s H_prior=1.833 H_mcts=1.301 drop=+0.533
+[worker 23] game 160 1/2-1/2 plies=287 time=434.6s H_prior=1.661 H_mcts=1.259 drop=+0.402
+[worker 23] refreshed weights (mtime 1776844837)
+[worker 23] game 161 1-0 plies=119 time=132.8s H_prior=1.884 H_mcts=1.275 drop=+0.609
+[worker 23] game 162 1-0 plies=159 time=194.7s H_prior=1.811 H_mcts=1.262 drop=+0.549
+[worker 23] refreshed weights (mtime 1776845135)
+[worker 23] game 163 1-0 plies=81 time=92.1s H_prior=2.127 H_mcts=1.469 drop=+0.658
+[worker 23] game 164 1/2-1/2 plies=140 time=159.7s H_prior=1.810 H_mcts=1.333 drop=+0.476
+[worker 23] refreshed weights (mtime 1776845440)
+[worker 23] game 165 0-1 plies=104 time=120.8s H_prior=1.916 H_mcts=1.233 drop=+0.683
+[worker 23] game 166 1/2-1/2 plies=163 time=192.4s H_prior=1.662 H_mcts=1.057 drop=+0.605
+[worker 23] refreshed weights (mtime 1776845752)
+[worker 23] game 167 1/2-1/2 plies=81 time=85.5s H_prior=1.976 H_mcts=1.510 drop=+0.466
+[worker 23] game 168 1-0 plies=119 time=131.7s H_prior=1.817 H_mcts=1.193 drop=+0.624
+[worker 23] game 169 1/2-1/2 plies=125 time=148.7s H_prior=1.980 H_mcts=1.503 drop=+0.477
+[worker 23] refreshed weights (mtime 1776846060)
+[worker 23] game 170 1-0 plies=133 time=150.8s H_prior=1.739 H_mcts=1.270 drop=+0.470
+[worker 23] game 171 0-1 plies=28 time=28.0s H_prior=2.320 H_mcts=1.831 drop=+0.489
+[worker 23] refreshed weights (mtime 1776846373)
+[worker 23] game 172 0-1 plies=160 time=194.5s H_prior=1.758 H_mcts=1.068 drop=+0.690
+[worker 23] game 173 1-0 plies=105 time=116.2s H_prior=1.678 H_mcts=1.156 drop=+0.523
+[worker 23] refreshed weights (mtime 1776846643)
+[worker 23] game 174 1-0 plies=123 time=140.8s H_prior=1.731 H_mcts=1.105 drop=+0.626
+[worker 23] game 175 0-1 plies=78 time=82.5s H_prior=1.996 H_mcts=1.433 drop=+0.563
+[worker 23] game 176 1/2-1/2 plies=213 time=271.0s H_prior=1.579 H_mcts=1.220 drop=+0.359
+[worker 23] refreshed weights (mtime 1776846917)
+[worker 23] game 177 1/2-1/2 plies=181 time=220.2s H_prior=1.665 H_mcts=1.191 drop=+0.474
+[worker 23] refreshed weights (mtime 1776847211)
+[worker 23] game 178 1-0 plies=209 time=282.6s H_prior=1.841 H_mcts=1.345 drop=+0.496
+[worker 23] refreshed weights (mtime 1776847534)
+[worker 23] game 179 1-0 plies=207 time=280.1s H_prior=1.648 H_mcts=1.220 drop=+0.428
+[worker 23] refreshed weights (mtime 1776847844)
+[worker 23] game 180 1/2-1/2 plies=157 time=165.0s H_prior=1.607 H_mcts=1.230 drop=+0.378
+[worker 23] game 181 0-1 plies=96 time=101.7s H_prior=1.723 H_mcts=1.247 drop=+0.475
+[worker 23] refreshed weights (mtime 1776848151)
+[worker 23] game 182 1-0 plies=165 time=195.0s H_prior=1.749 H_mcts=1.267 drop=+0.483
+[worker 23] game 183 1/2-1/2 plies=141 time=158.3s H_prior=1.765 H_mcts=1.230 drop=+0.535
+[worker 23] refreshed weights (mtime 1776848463)
+[worker 23] game 184 1-0 plies=83 time=86.1s H_prior=1.970 H_mcts=1.290 drop=+0.680
+[worker 23] game 185 1-0 plies=127 time=147.7s H_prior=1.903 H_mcts=1.332 drop=+0.571
+[worker 23] refreshed weights (mtime 1776848753)
+[worker 23] game 186 1-0 plies=135 time=161.9s H_prior=1.850 H_mcts=1.196 drop=+0.654
+[worker 23] game 187 1-0 plies=57 time=59.1s H_prior=1.985 H_mcts=1.490 drop=+0.494
+[worker 23] game 188 0-1 plies=24 time=23.8s H_prior=2.552 H_mcts=2.104 drop=+0.447
+[worker 23] refreshed weights (mtime 1776849048)
+[worker 23] game 189 1/2-1/2 plies=184 time=221.8s H_prior=1.648 H_mcts=1.141 drop=+0.507
+[worker 23] game 190 0-1 plies=48 time=52.8s H_prior=1.994 H_mcts=1.449 drop=+0.545
+[worker 23] refreshed weights (mtime 1776849334)
+[worker 23] game 191 1/2-1/2 plies=205 time=265.0s H_prior=1.786 H_mcts=1.387 drop=+0.398
+[worker 23] game 192 0-1 plies=64 time=69.1s H_prior=2.205 H_mcts=1.668 drop=+0.537
+[worker 23] refreshed weights (mtime 1776849618)
+[worker 23] game 193 1-0 plies=187 time=231.1s H_prior=1.587 H_mcts=1.057 drop=+0.530
+[worker 23] game 194 1-0 plies=119 time=130.4s H_prior=1.727 H_mcts=1.174 drop=+0.553
+[worker 23] refreshed weights (mtime 1776849933)
+[worker 23] game 195 1/2-1/2 plies=86 time=91.8s H_prior=2.050 H_mcts=1.308 drop=+0.742
+[worker 23] game 196 1-0 plies=31 time=31.5s H_prior=1.834 H_mcts=1.221 drop=+0.613
+[worker 23] game 197 1-0 plies=27 time=26.4s H_prior=2.211 H_mcts=1.847 drop=+0.364
+[worker 23] game 198 0-1 plies=130 time=148.2s H_prior=1.808 H_mcts=1.256 drop=+0.552
+[worker 23] refreshed weights (mtime 1776850231)
+[worker 23] game 199 1/2-1/2 plies=107 time=117.6s H_prior=2.005 H_mcts=1.323 drop=+0.682
+[worker 23] game 200 1-0 plies=107 time=111.4s H_prior=1.638 H_mcts=1.171 drop=+0.466
+[worker 23] refreshed weights (mtime 1776850541)
+[worker 23] game 201 0-1 plies=130 time=143.9s H_prior=1.783 H_mcts=1.163 drop=+0.620
+[worker 23] game 202 1-0 plies=57 time=55.0s H_prior=2.085 H_mcts=1.363 drop=+0.722
+[worker 23] game 203 1/2-1/2 plies=115 time=125.5s H_prior=1.740 H_mcts=1.045 drop=+0.695
+[worker 23] refreshed weights (mtime 1776850813)
+[worker 23] game 204 1-0 plies=43 time=44.0s H_prior=2.125 H_mcts=1.663 drop=+0.462
+[worker 23] game 205 1-0 plies=27 time=26.5s H_prior=2.383 H_mcts=1.989 drop=+0.394
+[worker 23] game 206 1/2-1/2 plies=136 time=154.8s H_prior=1.784 H_mcts=1.226 drop=+0.559
+[worker 23] refreshed weights (mtime 1776851108)
+[worker 23] game 207 1-0 plies=25 time=24.4s H_prior=2.197 H_mcts=1.642 drop=+0.556
+[worker 23] game 208 0-1 plies=168 time=207.5s H_prior=1.471 H_mcts=1.044 drop=+0.427
+[worker 23] game 209 0-1 plies=24 time=22.8s H_prior=2.161 H_mcts=1.184 drop=+0.978
+[worker 23] game 210 0-1 plies=42 time=40.8s H_prior=2.031 H_mcts=1.343 drop=+0.687
+[worker 23] game 211 0-1 plies=198 time=255.5s H_prior=1.718 H_mcts=1.195 drop=+0.523
+[worker 23] refreshed weights (mtime 1776851408)
+[worker 23] game 212 0-1 plies=86 time=95.9s H_prior=1.840 H_mcts=1.017 drop=+0.823
+[worker 23] refreshed weights (mtime 1776851689)
+[worker 23] game 213 1-0 plies=49 time=50.6s H_prior=2.000 H_mcts=1.538 drop=+0.462
+[worker 23] game 214 1-0 plies=29 time=25.2s H_prior=2.307 H_mcts=1.617 drop=+0.690
+[worker 23] game 215 1/2-1/2 plies=234 time=340.1s H_prior=1.743 H_mcts=1.288 drop=+0.455
+[worker 23] refreshed weights (mtime 1776851973)
+[worker 23] game 216 1-0 plies=59 time=61.3s H_prior=2.130 H_mcts=1.446 drop=+0.683
+[worker 23] game 217 0-1 plies=20 time=20.3s H_prior=2.357 H_mcts=1.698 drop=+0.659
+[worker 23] game 218 1/2-1/2 plies=127 time=120.8s H_prior=1.447 H_mcts=0.997 drop=+0.449
+[worker 23] refreshed weights (mtime 1776852279)
+[worker 23] game 219 1-0 plies=115 time=135.2s H_prior=1.999 H_mcts=1.362 drop=+0.637
+[worker 23] game 220 0-1 plies=54 time=56.1s H_prior=2.052 H_mcts=1.400 drop=+0.652
+[worker 23] refreshed weights (mtime 1776852565)
+[worker 23] game 221 0-1 plies=144 time=169.3s H_prior=1.722 H_mcts=1.087 drop=+0.634
+[worker 23] game 222 0-1 plies=118 time=142.4s H_prior=1.951 H_mcts=1.311 drop=+0.640
+[worker 23] refreshed weights (mtime 1776852874)
+[worker 23] game 223 1/2-1/2 plies=53 time=54.9s H_prior=2.348 H_mcts=1.688 drop=+0.660
+[worker 23] game 224 1/2-1/2 plies=206 time=276.6s H_prior=1.579 H_mcts=1.185 drop=+0.394
+[worker 23] refreshed weights (mtime 1776853195)
+[worker 23] game 225 0-1 plies=36 time=38.3s H_prior=2.123 H_mcts=1.270 drop=+0.853
+[worker 23] game 226 1-0 plies=227 time=290.7s H_prior=1.406 H_mcts=0.955 drop=+0.451
+[worker 23] game 227 0-1 plies=54 time=54.3s H_prior=2.147 H_mcts=1.453 drop=+0.694
+[worker 23] game 228 0-1 plies=122 time=138.8s H_prior=1.894 H_mcts=1.290 drop=+0.604
+[worker 23] game 229 0-1 plies=166 time=202.3s H_prior=1.708 H_mcts=1.132 drop=+0.575

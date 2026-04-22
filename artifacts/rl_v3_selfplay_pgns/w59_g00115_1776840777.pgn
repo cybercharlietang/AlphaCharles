@@ -1,0 +1,12 @@
+[Event "AlphaCharles self-play"]
+[Site "?"]
+[Date "????.??.??"]
+[Round "?"]
+[White "AlphaCharles"]
+[Black "AlphaCharles"]
+[Result "1-0"]
+[PlyCount "25"]
+[PriorEntropy "2.364"]
+[MctsEntropy "1.844"]
+
+1. e4 e6 2. d4 d5 3. exd5 exd5 4. Bd3 Nf6 5. Nf3 Be7 6. Bg5 c5 7. dxc5 O-O 8. O-O Nc6 9. Nc3 a5 10. a4 Bxc5 11. Bxf6 Ba7 12. Bxd8 Be3 13. fxe3 1-0
