@@ -43,6 +43,9 @@ class MCTSConfig:
     add_root_noise: bool = True        # False during eval/match play
     temperature_moves: int = 30        # plies with tau=1, then tau->0
     fpu: float = 0.0                   # First Play Urgency: Q value for unvisited children
+    batch_size: int = 1                # leaf-parallel batch size (1 = sequential/legacy)
+    virtual_loss: float = 1.0          # negative value added to in-flight edges
+                                       # to make PUCT pick different paths
 
 
 class Node:
@@ -203,6 +206,130 @@ class MCTS:
         score = Q + U
         return int(np.argmax(score))
 
+    # ---- Batched simulation (leaf-parallel with virtual loss) --------------
+
+    @torch.no_grad()
+    def _batch_evaluate(self, boards: list[chess.Board]):
+        """Batch-evaluate many boards in one forward pass.
+
+        Returns list of (priors, value, legal_moves) tuples, one per board.
+        """
+        if not boards:
+            return []
+        planes = np.stack([encode_board(b) for b in boards])  # (B, 119, 8, 8)
+        x = torch.from_numpy(planes).to(self.device)
+        logits, values = self.net(x)
+        logits_np = logits.cpu().numpy()     # (B, 4672)
+        values_np = values.cpu().numpy()     # (B,)
+        results = []
+        for i, board in enumerate(boards):
+            legal = list(board.legal_moves)
+            if not legal:
+                results.append((np.empty(0, dtype=np.float32), float(values_np[i]), legal))
+                continue
+            idx = np.fromiter((move_to_index(m, board) for m in legal),
+                              dtype=np.int64, count=len(legal))
+            ll = logits_np[i, idx]
+            ll = ll - ll.max()
+            exp = np.exp(ll)
+            priors = (exp / exp.sum()).astype(np.float32)
+            results.append((priors, float(values_np[i]), legal))
+        return results
+
+    def _simulate_batch(self, root: Node, batch_size: int) -> None:
+        """Run `batch_size` sims in parallel via virtual loss.
+
+        Phase 1: descend `batch_size` paths down the tree, marking each traversed
+                 edge with a negative virtual loss so other in-flight paths pick
+                 different routes.
+        Phase 2: collect leaves (non-terminal, un-expanded) and evaluate them in
+                 one batched NN forward pass.
+        Phase 3: expand leaves using fresh priors/values.
+        Phase 4: back up each path's value, reversing virtual losses along the way.
+
+        Safety: equivalent to `batch_size` calls to `_simulate` when batch_size=1.
+        """
+        vloss = self.cfg.virtual_loss
+        paths: list[list[tuple[Node, int]]] = []
+        leaves: list[Node] = []
+
+        # ---- Phase 1: collect batch_size paths + leaves with virtual loss ----
+        for _ in range(batch_size):
+            node = root
+            path: list[tuple[Node, int]] = []
+            while node.is_expanded and not node.is_terminal:
+                edge = self._select_edge(node)
+                path.append((node, edge))
+                # Apply virtual loss: bump N, subtract vloss from W
+                # (so Q[edge] = W/N looks worse to the NEXT in-flight sim)
+                node.N[edge] += 1
+                node.W[edge] -= vloss
+                child = node.children[edge]
+                if child is None:
+                    b = node.board.copy(stack=True)
+                    b.push(node.legal_moves[edge])
+                    child = Node(b)
+                    node.children[edge] = child
+                node = child
+                if not node.is_expanded:
+                    break
+            paths.append(path)
+            leaves.append(node)
+
+        # ---- Phase 2: determine which leaves need NN evaluation ---------------
+        # Terminal leaves have a known value; unexpanded leaves need NN eval;
+        # already-expanded leaves (another in-flight sim expanded them) use their
+        # stored value again (since they'd give same priors — we re-evaluate for
+        # simplicity and it's cheap once per game).
+        eval_indices = []
+        eval_boards = []
+        leaf_values: list[float | None] = [None] * batch_size
+        for i, leaf in enumerate(leaves):
+            term = _terminal_value_for_mover(leaf.board)
+            if term is not None:
+                leaf.is_terminal = True
+                leaf.terminal_value = term
+                leaf.is_expanded = True
+                leaf_values[i] = term
+            elif leaf.is_expanded:
+                # Another sim in this batch already expanded it; pick any prior
+                # value. Simplest: treat as 0 (neutral). Rarely fires.
+                leaf_values[i] = 0.0
+            else:
+                eval_indices.append(i)
+                eval_boards.append(leaf.board)
+
+        # ---- Phase 3: single batched NN call, then expand ---------------------
+        if eval_boards:
+            results = self._batch_evaluate(eval_boards)
+            for k, i in enumerate(eval_indices):
+                priors, value, legal = results[k]
+                leaf = leaves[i]
+                if not leaf.is_expanded:  # might have been expanded by earlier i in this batch (rare)
+                    leaf.legal_moves = legal
+                    leaf.move_indices = np.fromiter(
+                        (move_to_index(m, leaf.board) for m in legal),
+                        dtype=np.int32, count=len(legal),
+                    )
+                    leaf.P = priors
+                    leaf.N = np.zeros(len(legal), dtype=np.int32)
+                    leaf.W = np.zeros(len(legal), dtype=np.float32)
+                    leaf.children = [None] * len(legal)
+                    leaf.is_expanded = True
+                leaf_values[i] = value
+
+        # ---- Phase 4: back up each path, reversing virtual losses -----------
+        for i, path in enumerate(paths):
+            value = leaf_values[i] if leaf_values[i] is not None else 0.0
+            for parent, edge in reversed(path):
+                # Reverse virtual loss we added in Phase 1
+                parent.N[edge] -= 1
+                parent.W[edge] += vloss
+                # Real backup (sign-flip across plies)
+                value = -value
+                parent.N[edge] += 1
+                parent.W[edge] += value
+
     # ---- Public API --------------------------------------------------------
 
     def run(self, board: chess.Board, *, add_root_noise: bool | None = None,
@@ -222,8 +349,16 @@ class MCTS:
         if (add_root_noise if add_root_noise is not None else self.cfg.add_root_noise):
             self._add_dirichlet_noise(root)
 
-        for _ in range(self.cfg.num_simulations):
-            self._simulate(root)
+        bs = max(1, self.cfg.batch_size)
+        if bs == 1:
+            for _ in range(self.cfg.num_simulations):
+                self._simulate(root)
+        else:
+            sims_done = 0
+            while sims_done < self.cfg.num_simulations:
+                this_batch = min(bs, self.cfg.num_simulations - sims_done)
+                self._simulate_batch(root, this_batch)
+                sims_done += this_batch
 
         return root
 

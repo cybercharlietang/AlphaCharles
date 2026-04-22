@@ -125,7 +125,9 @@ def run_worker(cfg: dict, gpu: int, worker_id: int) -> None:
         with open(pgn_path, "w") as fh:
             fh.write(rec.pgn)
         print(f"[worker {worker_id}] game {game_idx} {rec.result} "
-              f"plies={rec.ply_count} time={dt:.1f}s", flush=True)
+              f"plies={rec.ply_count} time={dt:.1f}s "
+              f"H_prior={rec.avg_prior_entropy:.3f} H_mcts={rec.avg_mcts_entropy:.3f} "
+              f"drop={rec.avg_entropy_drop:+.3f}", flush=True)
 
 
 # ============================================================================
@@ -178,10 +180,15 @@ def run_trainer(cfg: dict, gpu: int) -> None:
     publish_every = cfg.get("publish_weights_every", 500)
     ckpt_every = cfg.get("ckpt_every", 2000)
     warmup_games = cfg.get("warmup_games", 32)
+    train_step_per_games = float(cfg.get("train_step_per_games", 1.0))
+    wall_clock_limit_s = float(cfg.get("wall_clock_limit_s", 999999))
+    lr_warmup_steps = int(cfg.get("lr_warmup_steps", 0))
+    lr_peak = train_cfg.lr
 
     start = time.time()
     print(f"[trainer] entering main loop: total_steps={total_steps}, "
-          f"warmup_games={warmup_games}, batch_size={train_cfg.batch_size}", flush=True)
+          f"warmup_games={warmup_games}, games_per_step={train_step_per_games}, "
+          f"wall_clock_limit_s={wall_clock_limit_s}", flush=True)
 
     while step < total_steps:
         # Ingest any pending games.
@@ -205,6 +212,23 @@ def run_trainer(cfg: dict, gpu: int) -> None:
                       f"buffer size {len(buffer)}", flush=True)
             time.sleep(3)
             continue
+
+        # Throttle: only train when games_ingested ≥ warmup + step * games_per_step.
+        required_games = warmup_games + step * train_step_per_games
+        if games_ingested < required_games:
+            time.sleep(2)
+            continue
+
+        # Wall-clock exit
+        if time.time() - start > wall_clock_limit_s:
+            print(f"[trainer] wall-clock limit hit ({wall_clock_limit_s}s), stopping", flush=True)
+            break
+
+        # LR warmup schedule
+        if lr_warmup_steps > 0 and step < lr_warmup_steps:
+            cur_lr = lr_peak * (0.3 + 0.7 * step / lr_warmup_steps)
+            for pg in optimizer.param_groups:
+                pg["lr"] = cur_lr
 
         # Train one step.
         planes, policies, values = buffer.sample(train_cfg.batch_size)

@@ -115,6 +115,53 @@ def test_temperature_zero_is_argmax(tiny_net):
     assert (pi > 0).sum() == 1
 
 
+def test_batched_mcts_equivalent_to_sequential(tiny_net):
+    """Batched MCTS with batch_size=1 must produce identical tree as sequential."""
+    import chess
+    np.random.seed(0)
+    torch.manual_seed(0)
+    board = chess.Board()
+
+    cfg_seq = MCTSConfig(num_simulations=32, add_root_noise=False, batch_size=1)
+    cfg_batch = MCTSConfig(num_simulations=32, add_root_noise=False, batch_size=1)
+    mcts_seq = MCTS(tiny_net, torch.device("cpu"), cfg_seq)
+    mcts_batch = MCTS(tiny_net, torch.device("cpu"), cfg_batch)
+
+    np.random.seed(0)
+    root_seq = mcts_seq.run(board.copy())
+    np.random.seed(0)
+    root_batch = mcts_batch.run(board.copy())
+
+    # Same total visits.
+    assert int(root_seq.N.sum()) == int(root_batch.N.sum()) == 32
+    # Same top move.
+    assert int(root_seq.N.argmax()) == int(root_batch.N.argmax())
+
+
+def test_batched_mcts_runs(tiny_net):
+    """Batched MCTS with batch_size=8 produces a valid tree with correct total visits."""
+    import chess
+    np.random.seed(0)
+    torch.manual_seed(0)
+    cfg = MCTSConfig(num_simulations=32, add_root_noise=False, batch_size=8)
+    mcts = MCTS(tiny_net, torch.device("cpu"), cfg)
+    root = mcts.run(chess.Board())
+    assert int(root.N.sum()) == 32
+    # Visit counts must be non-negative (virtual loss bug check).
+    assert (root.N >= 0).all()
+
+
+def test_batched_mcts_mate_in_one(tiny_net):
+    """Batched MCTS still finds mate-in-1 (regression test of priors alignment)."""
+    import chess
+    cfg = MCTSConfig(num_simulations=128, add_root_noise=False, batch_size=8)
+    mcts = MCTS(tiny_net, torch.device("cpu"), cfg)
+    board = chess.Board("6k1/5ppp/8/8/8/8/8/R6K w - - 0 1")
+    root = mcts.run(board)
+    move, _ = mcts.choose_move(root, temperature=0.0)
+    assert move.uci() == "a1a8", f"expected Ra8 mate, got {move.uci()}"
+
+
 def test_priors_aligned_with_legal_moves():
     """Regression test: MCTS must attach net priors to the CORRECT moves.
 

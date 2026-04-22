@@ -41,6 +41,10 @@ class GameRecord:
     result: str                  # '1-0', '0-1', '1/2-1/2'
     ply_count: int
     pgn: str = ""                # full game PGN text, empty if not tracked
+    # Per-game averages of entropy (in nats), useful for diagnosing exploration
+    avg_prior_entropy: float = 0.0   # mean entropy of net's raw prior over legal moves
+    avg_mcts_entropy: float = 0.0    # mean entropy of MCTS visit distribution
+    avg_entropy_drop: float = 0.0    # mean (prior - mcts) — MCTS's "decisiveness gain"
 
 
 def play_game(net, device: torch.device, cfg: SelfPlayConfig | None = None,
@@ -55,6 +59,8 @@ def play_game(net, device: torch.device, cfg: SelfPlayConfig | None = None,
     traj_planes: list[np.ndarray] = []
     traj_policies: list[np.ndarray] = []
     traj_movers: list[bool] = []  # True = white to move at this ply
+    prior_entropies: list[float] = []   # H(root.P) per ply
+    mcts_entropies: list[float] = []    # H(root.N / sum(root.N)) per ply
 
     # Build PGN incrementally.
     pgn_game = chess.pgn.Game()
@@ -96,6 +102,16 @@ def play_game(net, device: torch.device, cfg: SelfPlayConfig | None = None,
         traj_policies.append(pi)
         traj_movers.append(board.turn == chess.WHITE)
 
+        # Track per-ply entropy diagnostics.
+        if len(root.P) > 0:
+            p_legal = root.P[root.P > 0]
+            prior_entropies.append(float(-(p_legal * np.log(p_legal)).sum()))
+            total_visits = float(root.N.sum())
+            if total_visits > 0:
+                vp = root.N.astype(np.float64) / total_visits
+                vp = vp[vp > 0]
+                mcts_entropies.append(float(-(vp * np.log(vp)).sum()))
+
         move, edge = mcts.choose_move(root, temperature)
         # Re-root: the chosen edge's subtree becomes the new root.
         next_root = root.children[edge]
@@ -119,6 +135,12 @@ def play_game(net, device: torch.device, cfg: SelfPlayConfig | None = None,
     result_str = {1: "1-0", -1: "0-1", 0: "1/2-1/2"}[result_winner]
     pgn_game.headers["Result"] = result_str
     pgn_game.headers["PlyCount"] = str(ply)
+
+    avg_prior = float(np.mean(prior_entropies)) if prior_entropies else 0.0
+    avg_mcts = float(np.mean(mcts_entropies)) if mcts_entropies else 0.0
+    pgn_game.headers["PriorEntropy"] = f"{avg_prior:.3f}"
+    pgn_game.headers["MctsEntropy"] = f"{avg_mcts:.3f}"
+
     return GameRecord(
         planes=np.stack(traj_planes) if traj_planes else np.empty((0, 119, 8, 8), dtype=np.float32),
         policies=np.stack(traj_policies) if traj_policies else np.empty((0, POLICY_SIZE), dtype=np.float32),
@@ -126,4 +148,7 @@ def play_game(net, device: torch.device, cfg: SelfPlayConfig | None = None,
         result=result_str,
         ply_count=ply,
         pgn=str(pgn_game),
+        avg_prior_entropy=avg_prior,
+        avg_mcts_entropy=avg_mcts,
+        avg_entropy_drop=avg_prior - avg_mcts,
     )

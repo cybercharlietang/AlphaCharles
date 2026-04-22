@@ -246,6 +246,73 @@ self-play**. Specifically:
 - **2h cron monitoring**: caught the "RL is running but idle on 7 GPUs"
   issue within 2h of it starting
 
+## Batching for self-play RL on H100 — empirical scaling
+
+Adding this after tonight's 8-H100 scaling experiment (April 2026). Two
+independent layers of batching, don't confuse them:
+
+### Layer 1 — MCTS virtual-loss batch (inside one worker's tree)
+Controlled by `cfg.mcts.batch_size`. Each worker runs ONE self-play game at a
+time; for each move it does 800 MCTS sims. With `batch_size=B`, B sims are
+collected in flight via virtual loss, then evaluated in ONE batched NN forward
+pass. Pure inference speedup, doesn't change games-in-flight count.
+
+Measured on H100 for our 24M-param ResNet at 800 sims/move:
+
+| MCTS batch | sims/s | Speedup | VRAM |
+|---|---|---|---|
+| 1 (sequential) | 297 | 1.0× | 235 MB |
+| 4 | 765 | 2.6× | 236 MB |
+| 8 | 1048 | 3.5× | 237 MB |
+| 16 | 1292 | 4.3× | 240 MB |
+| 32 | 1544 | 5.2× | 244 MB |
+| 64 | 1704 | 5.7× | 260 MB |
+| 128 | 2000 | 6.7× | 280 MB |
+
+Diminishing returns past bs=32. Beyond ~64, virtual loss starts to degrade
+search quality (too many sims forced off optimal path). For chess with ~30
+legal moves at root, **bs=32 is the sweet spot** — matches Leela T80's setting.
+
+### Layer 2 — workers per GPU (concurrent games per device)
+Each worker is an independent Python process with its own model copy on the
+GPU. Multiple workers on one GPU share the GPU's inference bandwidth but
+parallelize MCTS tree operations (Python, CPU-bound).
+
+Measured on 8× H100 SXM with our net:
+
+| Workers/GPU | Games/hour (pod) | Per-worker rate | GPU util | VRAM/GPU |
+|---|---|---|---|---|
+| 2 (14 total) | 560 | 40/hr | 12% | 2.6 GB |
+| 4 (28 total) | 1,060 | 38/hr | 22% | 4.3 GB |
+| 8 (56 total) | 1,790 | 32/hr | 44% | 7.6 GB |
+| **16 (112 total)** | **3,240** | **29/hr** | **77%** | **15.3 GB** |
+
+Scaling efficiency: 2→4: 95%, 4→8: 85%, 8→16: 91%. Even at 16 per GPU with
+~5s CPU contention per game per worker, aggregate throughput keeps climbing.
+
+### Why 16 works so well on H100
+- H100 has enormous HBM (80 GB) → 16 model copies × ~0.1 GB = 1.6 GB is trivial
+- Inference launch overhead amortized across 16 concurrent streams
+- CPU: 224 vCPUs / 113 processes (1 trainer + 112 workers) = 2 vCPUs per worker.
+  MCTS tree traversal is Python-bound but doesn't need many cores per worker.
+- Total memory usage: 108 GB / 2015 GB = 5% — plenty of headroom for larger
+  batches or models later.
+
+### The real ceiling we haven't hit
+At 16 workers with bs=32, GPU util is 77% — we're still leaving ~23% on the
+table. The remaining bottleneck is **Python CPU work in MCTS** (`encode_board`,
+tree traversal). Cracking that requires rewriting hot paths in Cython/Rust or
+moving tree ops to GPU (~1-2 day dev). Not worth for one overnight run but
+would enable 5,000+ games/hour.
+
+### Rule of thumb for future runs
+- MCTS batch: 32 for self-play training, 16 for eval, 64+ only for final
+  inference where search quality matters less than speed.
+- Workers per GPU: 16 on H100/A100 80GB (nearly free to go this wide).
+- On smaller GPUs (A10, T4): likely 4-8 is the limit due to VRAM fragmentation.
+
+## Lessons for the pipeline design itself
+
 ### What I'd do differently
 - **Unit-test end-to-end MCTS, not just encoding**: the priors-to-moves
   regression test takes 1 second and would have caught Bug #3 instantly.

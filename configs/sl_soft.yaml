@@ -1,0 +1,27 @@
+# Short SL run targeting entropy ~1.0-1.5 (not overfit like the 150k run).
+# Based on pipeline.log data: entropy was ~1.95 at step 2700 and ~0.73 at step 25900,
+# so 10k steps should land in the 0.9-1.3 range.
+
+data_dir: data/sl_shards
+output_dir: runs/sl_soft
+resume_from: null                  # fresh start, NOT resumed from overfit final.pt
+bf16: true
+num_workers: 4
+total_steps: 10000
+ckpt_every: 2000
+log_every: 50
+wandb: false
+run_name: sl_soft
+keep_last_n_ckpts: 10              # keep all ckpts this time; learned my lesson
+
+model:
+  channels: 256
+  num_blocks: 20
+
+train:
+  lr: 2.5e-3
+  weight_decay: 1.0e-4
+  batch_size: 4096
+  policy_loss_weight: 1.0
+  value_loss_weight: 1.0
+  grad_clip: 5.0

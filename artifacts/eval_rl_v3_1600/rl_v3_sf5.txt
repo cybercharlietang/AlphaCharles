@@ -1,0 +1,19 @@
+/workspace/AlphaCharles/scripts/eval_vs_stockfish.py:28: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(args.ckpt, map_location=args.device)
+game 1: we=W result=0-1  score so far: 0/0/1
+game 2: we=B result=0-1  score so far: 1/0/1
+game 3: we=W result=1-0  score so far: 2/0/1
+game 4: we=B result=0-1  score so far: 3/0/1
+game 5: we=W result=0-1  score so far: 3/0/2
+game 6: we=B result=1-0  score so far: 3/0/3
+game 7: we=W result=1-0  score so far: 4/0/3
+game 8: we=B result=1/2-1/2  score so far: 4/1/3
+game 9: we=W result=1-0  score so far: 5/1/3
+game 10: we=B result=1/2-1/2  score so far: 5/2/3
+game 11: we=W result=1-0  score so far: 6/2/3
+game 12: we=B result=1-0  score so far: 6/2/4
+game 13: we=W result=1-0  score so far: 7/2/4
+game 14: we=B result=0-1  score so far: 8/2/4
+game 15: we=W result=1-0  score so far: 9/2/4
+game 16: we=B result=1/2-1/2  score so far: 9/3/4
+game 17: we=W result=0-1  score so far: 9/3/5

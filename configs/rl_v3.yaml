@@ -1,0 +1,44 @@
+# RL v3: launched from soft SL seed (entropy ~1.0), not overfit.
+# 1 step per game (denser than v2's 5 games/step, matches "engine needs to
+# consider multiple moves" intuition), 800 sims, 8h overnight budget.
+
+output_dir: runs/rl_v3
+seed_from: runs/sl_soft/final.pt
+total_steps: 10000                 # upper bound; wall_clock_limit stops earlier
+wall_clock_limit_s: 28800          # 8 hours
+replay_capacity: 500000
+warmup_games: 150
+train_step_per_games: 5.0          # AlphaZero-like ratio (~2.6× position reuse)
+publish_weights_every: 50
+ckpt_every: 100
+log_every: 10
+lr_warmup_steps: 100
+wandb: false
+run_name: rl_v3
+
+move_limit: 400
+resign_threshold: -0.95
+resign_after_move: 20
+
+model:
+  channels: 256
+  num_blocks: 20
+
+train:
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+  batch_size: 1024
+  policy_loss_weight: 1.0
+  value_loss_weight: 1.0
+  grad_clip: 5.0
+
+mcts:
+  c_puct: 2.5
+  num_simulations: 800             # AlphaZero spec
+  batch_size: 32                   # batched leaf evaluation → ~5× speedup on H100
+  virtual_loss: 1.0
+  dirichlet_alpha: 0.3
+  dirichlet_epsilon: 0.25
+  add_root_noise: true
+  temperature_moves: 30
+  fpu: 0.0

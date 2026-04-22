@@ -1,0 +1,42 @@
+# 2h test run of RL v2 with AlphaZero-style training ratio.
+# Corrects v1 failures: proper reuse ratio, seeded from sl_warmstart (not
+# broken puzzle model), flat low LR, step-per-game throttle.
+
+output_dir: runs/rl_v2_test
+seed_from: runs/sl_warmstart/final.pt
+total_steps: 10000                   # effectively unbounded; wall_clock_limit stops us
+wall_clock_limit_s: 7200             # 2 hours
+replay_capacity: 500000
+warmup_games: 100                    # wait for 100 games before first training step
+train_step_per_games: 5.0            # ~2x reuse per position, matches AlphaZero
+publish_weights_every: 20            # every 20 steps = every 100 games
+ckpt_every: 50
+log_every: 10
+lr_warmup_steps: 30
+wandb: false
+run_name: rl_v2_test
+
+move_limit: 400
+resign_threshold: -0.95
+resign_after_move: 20
+
+model:
+  channels: 256
+  num_blocks: 20
+
+train:
+  lr: 1.0e-4                         # flat 1e-4 after warmup
+  weight_decay: 1.0e-4
+  batch_size: 1024
+  policy_loss_weight: 1.0
+  value_loss_weight: 1.0
+  grad_clip: 5.0
+
+mcts:
+  c_puct: 2.5
+  num_simulations: 400               # 2h test uses 400; bump to 800 for overnight
+  dirichlet_alpha: 0.3
+  dirichlet_epsilon: 0.25
+  add_root_noise: true
+  temperature_moves: 30
+  fpu: 0.0
